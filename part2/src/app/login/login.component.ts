@@ -17,8 +17,8 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 export class LoginComponent implements OnInit {
 
-  Username = '';
-  Password = '';
+  Username ="";
+  Password ="";
 
   constructor(private router:Router,  private httpClient: HttpClient) { }
 
@@ -33,6 +33,9 @@ export class LoginComponent implements OnInit {
         if (data.ok){
           alert("correct");
           console.log(data.user);
+          sessionStorage.setItem('Username', data.user.Username);
+          sessionStorage.setItem('Loginstatus',  data.ok);
+          sessionStorage.setItem('Role', data.user.Role);
           this.router.navigateByUrl("/profile");
         }
         else { alert("Username or Password incorrect");} 

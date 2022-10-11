@@ -18,7 +18,7 @@ module.exports = function(req,res) {
     var R = req.body.Role;
     
 
-    const User = {Username: U, Email: E, Role: E, Password: P }
+    const User = {Username: U, Email: E, Role: R, Password: P }
     // Get the documents collection
     const db = client.db(dbName);
     const collection = db.collection('Users');

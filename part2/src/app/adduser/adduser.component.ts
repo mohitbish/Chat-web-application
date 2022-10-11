@@ -16,10 +16,10 @@ const BACKEND_URL = 'http://localhost:3000';
   styleUrls: ['./adduser.component.css']
 })
 export class AdduserComponent implements OnInit {
-    Username : String = " "
-    Password: String =" "
-    Email : String = " "
-    Role: String = " "
+    Username : String = ""
+    Password: String = ""
+    Email : String = ""
+    Role: String = ""
 
   constructor(private router:Router, private httpClient: HttpClient) { }
 
