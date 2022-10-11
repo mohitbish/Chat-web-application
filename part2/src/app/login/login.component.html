@@ -1,1 +1,9 @@
-<p>login works!</p>
+<h1>Login</h1>
+<br>
+<label for="Name">Name</label>
+<input type="text"  name="Name" [(ngModel)]="Username"  >
+<br>
+<label for="Password">Password</label>
+<input type="password"  name="Password" [(ngModel)]="Password"  >
+<br>
+<button class="submit" (click) = "check()">Login</button>

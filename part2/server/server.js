@@ -49,5 +49,6 @@ httpsServer.listen(PORT2, () => {
 
 
 app.post('/adduser', require('./routes/adduser'));
+app.post('/login', require('./routes/logincheck'));
 
 module.exports = app;
