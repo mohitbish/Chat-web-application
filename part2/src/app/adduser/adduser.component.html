@@ -1,1 +1,15 @@
-<p>adduser works!</p>
+<h1>Add user</h1>
+<br>
+<label for="Name">Name</label>
+<input type="text"  name="Name" [(ngModel)]="Username"  >
+<br>
+<label for="Password">Password</label>
+<input type="password"  name="Password" [(ngModel)]="Password"  >
+<br>
+<label for="Email">Email</label>
+<input type="email"  name="Email" [(ngModel)]="Email"  >
+<br>
+<label for="Role">Role</label>
+<input type="text"  name="Role" [(ngModel)]="Role"  >
+<br>
+<button class="submit" (click) = "adduser()">Add</button>

@@ -47,3 +47,7 @@ httpsServer.listen(PORT2, () => {
     console.log(`Starting htttps server at: ${PORT2}`);
 });
 
+
+app.post('/adduser', require('./routes/adduser'));
+
+module.exports = app;
