@@ -22,7 +22,7 @@ const BACKEND_URL = 'http://localhost:3000';
 export class AddgroupComponent implements OnInit {
 
   Groupname: String = "";
-  User: Userobj = { UserName : "", Password: "", Email : "", Role: ""}
+  User: Userobj = { Username : "", Password: "", Email : "", Role: ""}
   Chat: Chatobj = {Message:"", User:this.User }
   Channel: Channelobj = {Channelname:"", Userlist : [this.User], chatList:[this.Chat]}
   

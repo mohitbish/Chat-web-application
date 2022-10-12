@@ -1,5 +1,5 @@
 export interface Userobj {
-    UserName : String
+    Username : String
     Password: String
     Email : String
     Role: String

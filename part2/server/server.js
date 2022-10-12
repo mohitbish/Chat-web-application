@@ -53,4 +53,6 @@ app.post('/login', require('./routes/logincheck'));
 app.post('/addgroup', require('./routes/addgroup'));
 app.post('/removegroup', require('./routes/removegroup'));
 app.get('/getgroups', require('./routes/getgroups'));
+app.post('/removeuser', require('./routes/removeuser'));
+app.get('/getusers', require('./routes/getusers'));
 module.exports = app;

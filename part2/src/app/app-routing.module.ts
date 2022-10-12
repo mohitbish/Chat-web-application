@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { SuperadminComponent } from './superadmin/superadmin.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { AddgroupComponent } from './addgroup/addgroup.component';
+import { UsersComponent } from './users/users.component';
 
 
 const routes: Routes = [{path:'login', component:LoginComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [{path:'login', component:LoginComponent},
                         {path:'superadmin', component:SuperadminComponent},
                         {path:'groupadmin', component:GroupadminComponent},
                         {path:'adduser', component:AdduserComponent},
-                        {path: 'addgroup', component: AddgroupComponent}
+                        {path: 'addgroup', component: AddgroupComponent},
+                        {path: 'users', component: UsersComponent}
 
                       ];
 
