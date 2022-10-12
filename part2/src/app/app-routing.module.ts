@@ -10,6 +10,7 @@ import { AdduserComponent } from './adduser/adduser.component';
 import { AddgroupComponent } from './addgroup/addgroup.component';
 import { UsersComponent } from './users/users.component';
 import { UpdateuserComponent } from './updateuser/updateuser.component';
+import { UserviewComponent } from './userview/userview.component';
 
 
 const routes: Routes = [{path:'login', component:LoginComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [{path:'login', component:LoginComponent},
                         {path:'adduser', component:AdduserComponent},
                         {path: 'addgroup', component: AddgroupComponent},
                         {path: 'users', component: UsersComponent},
-                        {path: 'updateuser', component: UpdateuserComponent}
+                        {path: 'updateuser', component: UpdateuserComponent},
+                        {path: 'userview', component: UserviewComponent}
 
                       ];
 

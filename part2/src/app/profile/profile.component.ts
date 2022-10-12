@@ -36,6 +36,9 @@ export class ProfileComponent implements OnInit {
     if ((sessionStorage.getItem('Loginstatus')=="true") && (sessionStorage.getItem('Role')=="groupassis") ){
       this.router.navigateByUrl("/groupassis");
     }
+    if ((sessionStorage.getItem('Loginstatus')=="true") && (sessionStorage.getItem('Role')=="user") ){
+      this.router.navigateByUrl("/userview");
+    }
   }
 
   ngOnInit(): void {

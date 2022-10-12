@@ -15,6 +15,7 @@ import { AdduserComponent } from './adduser/adduser.component';
 import { AddgroupComponent } from './addgroup/addgroup.component';
 import { UsersComponent } from './users/users.component';
 import { UpdateuserComponent } from './updateuser/updateuser.component';
+import { UserviewComponent } from './userview/userview.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { UpdateuserComponent } from './updateuser/updateuser.component';
     AdduserComponent,
     AddgroupComponent,
     UsersComponent,
-    UpdateuserComponent
+    UpdateuserComponent,
+    UserviewComponent
     
   ],
   imports: [
