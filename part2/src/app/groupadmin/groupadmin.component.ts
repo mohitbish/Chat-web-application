@@ -24,13 +24,20 @@ export class GroupadminComponent implements OnInit {
   constructor(private router:Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+    this.getGroups();
   }
 
-  getGroupss(){
+  getGroups(){
     this.httpClient.get<Groupobj[]>(BACKEND_URL + '/getgroups')
       .subscribe((data:any)=>{
         this.Groups = data;
         console.log(typeof(data), data);
+      })
+  }
+  removegroup(Group:Groupobj){
+    this.httpClient.post(BACKEND_URL + '/removegroup', Group)
+      .subscribe((data:any)=>{
+        this.Groups = data;
       })
   }
 
