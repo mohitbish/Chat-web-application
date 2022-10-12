@@ -18,6 +18,7 @@ const BACKEND_URL = 'http://localhost:3000';
 export class UsersComponent implements OnInit {
 
   users: Userobj[]= [];
+  updateuserobj: Userobj[]= [];
   constructor(private router:Router,  private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -37,16 +38,16 @@ export class UsersComponent implements OnInit {
         this.users = data;
       })
   }
-  /*
-  updateproduct(user:){
-    this.httpClient.post(BACKEND_URL + '/productfind1', Prod)
+  
+  updateuser(user:Userobj){
+    this.httpClient.post(BACKEND_URL + '/getupdateuser', user)
       .subscribe((data:any)=>{
-        this.uprods = data[0];
-        console.log(this.uprods)
-        localStorage.removeItem('prod')
-        localStorage.setItem('prod', JSON.stringify(this.uprods));
-        this.router.navigateByUrl("/updateproduct");
+        this.updateuserobj = data[0];
+        console.log(this.updateuserobj)
+        localStorage.removeItem('user')
+        localStorage.setItem('user', JSON.stringify(this.updateuserobj));
+        this.router.navigateByUrl("/updateuser");
       })
-  }*/
+  }
 
 }

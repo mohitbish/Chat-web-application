@@ -14,6 +14,7 @@ import { GroupadminComponent } from './groupadmin/groupadmin.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { AddgroupComponent } from './addgroup/addgroup.component';
 import { UsersComponent } from './users/users.component';
+import { UpdateuserComponent } from './updateuser/updateuser.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { UsersComponent } from './users/users.component';
     GroupadminComponent,
     AdduserComponent,
     AddgroupComponent,
-    UsersComponent
+    UsersComponent,
+    UpdateuserComponent
     
   ],
   imports: [

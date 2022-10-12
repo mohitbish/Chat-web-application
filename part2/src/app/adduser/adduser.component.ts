@@ -29,8 +29,12 @@ export class AdduserComponent implements OnInit {
     let user = {Username: this.Username, Email : this.Email, Role: this.Role, Password: this.Password}
     this.httpClient.post(BACKEND_URL + '/adduser', user, httpOptions)
       .subscribe((data:any)=>{
-        console.log(data);
-        alert("added");
+        console.log(data.user);
+        if(data.ok){
+          alert("added");
+          this.router.navigateByUrl("/users");
+        }
+       
       })
   }
 

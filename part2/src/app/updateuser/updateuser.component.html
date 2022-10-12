@@ -1,0 +1,15 @@
+
+<h1>Update user</h1>
+<label for="Username">Username</label>
+<br>
+<input type="text"  name="Username" [(ngModel)]="Username"  value={{newuser.Username}}>
+<br>
+<label for="Email">Email</label>
+<br>
+<input type="email"  name="Email" [(ngModel)]="Email"  value={{newuser.Email}} >
+<br>
+<label for="Role">Role</label>
+<br>
+<input type="text"  name="Role" [(ngModel)]="Role"  value={{newuser.Role}} >
+<br>
+<button class="submit" (click) = "upadteuser()">Update</button>

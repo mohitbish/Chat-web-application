@@ -25,7 +25,7 @@ module.exports = function(req,res) {
     // Insert some documents
     collection.insertOne(User, function(err, result) {
         if (err) throw err;
-        res.send(User);
+        res.send({"ok": true, "user":User});
         console.log("User Added");
         
     });

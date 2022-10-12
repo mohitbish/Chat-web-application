@@ -9,6 +9,7 @@ import { SuperadminComponent } from './superadmin/superadmin.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import { AddgroupComponent } from './addgroup/addgroup.component';
 import { UsersComponent } from './users/users.component';
+import { UpdateuserComponent } from './updateuser/updateuser.component';
 
 
 const routes: Routes = [{path:'login', component:LoginComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [{path:'login', component:LoginComponent},
                         {path:'groupadmin', component:GroupadminComponent},
                         {path:'adduser', component:AdduserComponent},
                         {path: 'addgroup', component: AddgroupComponent},
-                        {path: 'users', component: UsersComponent}
+                        {path: 'users', component: UsersComponent},
+                        {path: 'updateuser', component: UpdateuserComponent}
 
                       ];
 
