@@ -1,4 +1,4 @@
-import { Userobj } from "src/app/userobj";
+import { Userobj } from "./userobj" 
 export interface Chatobj {
     Message: String
     User:Userobj

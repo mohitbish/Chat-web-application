@@ -12,6 +12,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { SuperadminComponent } from './superadmin/superadmin.component';
 import { GroupadminComponent } from './groupadmin/groupadmin.component';
 import { AdduserComponent } from './adduser/adduser.component';
+import { AddgroupComponent } from './addgroup/addgroup.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AdduserComponent } from './adduser/adduser.component';
     LogoutComponent,
     SuperadminComponent,
     GroupadminComponent,
-    AdduserComponent
+    AdduserComponent,
+    AddgroupComponent
     
   ],
   imports: [

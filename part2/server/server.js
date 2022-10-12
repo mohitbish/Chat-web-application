@@ -50,5 +50,6 @@ httpsServer.listen(PORT2, () => {
 
 app.post('/adduser', require('./routes/adduser'));
 app.post('/login', require('./routes/logincheck'));
+app.post('/addgroup', require('./routes/addgroup'));
 
 module.exports = app;
