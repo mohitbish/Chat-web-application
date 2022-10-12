@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
 
   check(){
     let user = {Username:this.Username, Password: this.Password};
- 
     this.httpClient.post(BACKEND_URL + '/login', user, httpOptions)
       .subscribe((data:any)=>{
         if (data.ok){

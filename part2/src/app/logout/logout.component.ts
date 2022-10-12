@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class LogoutComponent implements OnInit {
 
   constructor(private router: Router) { 
-    if (!(sessionStorage.getItem('userlogin')=="true")){
+    if (!(sessionStorage.getItem('Loginstatus')=="true")){
       alert("login please");
       this.router.navigateByUrl("/login");
     }
