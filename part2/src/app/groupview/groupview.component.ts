@@ -29,9 +29,23 @@ export class GroupviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.Group = JSON.parse(localStorage.getItem('Group')!);
+    this.Groupname = this.Group.Groupname
     console.log((this.Group))
-    this.Channels = this.Group.Channellist
+    console.log(this.Channels)
     
+    this.getChannels()
   }
-
+  addChannel(){
+    localStorage.removeItem('Group')
+    localStorage.setItem('Group', JSON.stringify(this.Group));
+    this.router.navigateByUrl("/addchannel");
+  }
+  getChannels(){
+    const Group = this.Group
+    this.httpClient.post(BACKEND_URL + '/getchannels', Group, httpOptions)
+      .subscribe((data:any)=>{
+        this.Channels = data[0].Channellist;
+        console.log(data[0])
+      })
+  }
 }

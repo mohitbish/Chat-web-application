@@ -1,1 +1,15 @@
-<p>groupview works!</p>
+<p>GroupName: {{Groupname}}</p>
+<p><button (click) = "addChannel()"class= "btn btn-danger">Add Channel</button></p>
+<br>
+<table class ="table table-hover">
+    <thead>
+        <tr>
+            <td>GroupName</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Channel of Channels">
+            <td> {{Channel.Channelname}}</td>
+        </tr>
+    </tbody>
+</table>

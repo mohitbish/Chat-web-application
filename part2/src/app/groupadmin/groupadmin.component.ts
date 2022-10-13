@@ -41,7 +41,7 @@ export class GroupadminComponent implements OnInit {
       })
   }
   opengroup(Group: Groupobj){
-    localStorage.removeItem('Group')
+    localStorage.clear
     localStorage.setItem('Group', JSON.stringify(Group));
     this.router.navigateByUrl("/groupview");
   }

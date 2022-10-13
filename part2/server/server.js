@@ -57,4 +57,6 @@ app.post('/removeuser', require('./routes/removeuser'));
 app.get('/getusers', require('./routes/getusers'));
 app.post('/getupdateuser', require('./routes/getupdateuser'));
 app.post('/updateuser', require('./routes/updateuser'));
+app.post('/addchannel', require('./routes/addchannel'));
+app.post('/getchannels', require('./routes/getchannels'));
 module.exports = app;
