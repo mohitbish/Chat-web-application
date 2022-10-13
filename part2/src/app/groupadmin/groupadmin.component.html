@@ -12,6 +12,8 @@
         <tr *ngFor="let Group of Groups">
             <td> {{Group.Groupname}}</td>
             <td> <button (click) = "removegroup(Group)"class= "btn btn-danger">Delete</button></td>
+            <td> <button (click) = "opengroup(Group)"class= "btn btn-danger">open</button></td>
         </tr>
     </tbody>
 </table>
+

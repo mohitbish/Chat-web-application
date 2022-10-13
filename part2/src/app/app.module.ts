@@ -16,6 +16,8 @@ import { AddgroupComponent } from './addgroup/addgroup.component';
 import { UsersComponent } from './users/users.component';
 import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { UserviewComponent } from './userview/userview.component';
+import { GroupviewComponent } from './groupview/groupview.component';
+import { AddchannelComponent } from './addchannel/addchannel.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { UserviewComponent } from './userview/userview.component';
     AddgroupComponent,
     UsersComponent,
     UpdateuserComponent,
-    UserviewComponent
+    UserviewComponent,
+    GroupviewComponent,
+    AddchannelComponent
     
   ],
   imports: [

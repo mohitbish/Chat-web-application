@@ -40,5 +40,10 @@ export class GroupadminComponent implements OnInit {
         this.Groups = data;
       })
   }
+  opengroup(Group: Groupobj){
+    localStorage.removeItem('Group')
+    localStorage.setItem('Group', JSON.stringify(Group));
+    this.router.navigateByUrl("/groupview");
+  }
 
 }
