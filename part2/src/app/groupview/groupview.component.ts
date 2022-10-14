@@ -49,13 +49,20 @@ export class GroupviewComponent implements OnInit {
       })
   }
 
-  removechannel(channel:Channelobj){
-    this.httpClient.post(BACKEND_URL + '/removechannel', channel)
+  removechannel(channel:{ Channelname: string; Userlist: { Username: string; Password: string; Email: string; Role: string; }[]; chatList: { Message: string; User: { Username: string; Password: string; Email: string; Role: string; }; }[]; }){
+    const Channels = this.Channels.filter(data => data.Channelname != channel.Channelname);
+    const NGroup = {Groupname: this.Groupname, Channellist: Channels, userlist: this.Group.userlist };
+    const Group = {new : NGroup, old: this.Group};
+    this.httpClient.post(BACKEND_URL + '/addchannel', Group , httpOptions)
       .subscribe((data:any)=>{
-        this.Channels = data;
+        console.log(data.Group.Channellist)
+        if(data.ok){
+          alert("remove");
+          this.getChannels();
+        }
       })
   }
-  openchannel(Channel: Channelobj){
+  openchannel(Channel: { Channelname: string; Userlist: { Username: string; Password: string; Email: string; Role: string; }[]; chatList: { Message: string; User: { Username: string; Password: string; Email: string; Role: string; }; }[]; }){
     localStorage.clear
     localStorage.setItem('channel', JSON.stringify(Channel));
     this.router.navigateByUrl("/channelview");
