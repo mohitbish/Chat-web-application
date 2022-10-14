@@ -48,4 +48,16 @@ export class GroupviewComponent implements OnInit {
         console.log(data[0])
       })
   }
+
+  removechannel(channel:Channelobj){
+    this.httpClient.post(BACKEND_URL + '/removechannel', channel)
+      .subscribe((data:any)=>{
+        this.Channels = data;
+      })
+  }
+  openchannel(Channel: Channelobj){
+    localStorage.clear
+    localStorage.setItem('channel', JSON.stringify(Channel));
+    this.router.navigateByUrl("/channelview");
+  }
 }
