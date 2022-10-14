@@ -21,9 +21,9 @@ export class GroupviewComponent implements OnInit {
   Groupname= "";
   User= { Username : "", Password: "", Email : "", Role: ""}
   Chat = {Message:"", User:this.User }
-  Channel = {Channelname:"", Userlist : [this.User], chatList:[this.Chat]}
+  Channel = {Channelname:"", Userlist : [], chatList:[]}
   Channels =[this.Channel]
-  Group = {Groupname: this.Groupname,Channellist: [this.Channel], userlist:[this.User] };
+  Group = {Groupname: this.Groupname,Channellist: [], userlist:[] };
   constructor(private router:Router, private httpClient: HttpClient) {
    }
 
@@ -44,11 +44,12 @@ export class GroupviewComponent implements OnInit {
     this.httpClient.post(BACKEND_URL + '/getchannels', Group, httpOptions)
       .subscribe((data:any)=>{
         this.Channels = data[0].Channellist;
+        this.Channels.filter(data => data.Channelname != " ");
         console.log(data[0])
       })
   }
 
-  removechannel(channel:{ Channelname: string; Userlist: { Username: string; Password: string; Email: string; Role: string; }[]; chatList: { Message: string; User: { Username: string; Password: string; Email: string; Role: string; }; }[]; }){
+  removechannel(channel: Channelobj){
     const Channels = this.Channels.filter(data => data.Channelname != channel.Channelname);
     const NGroup = {Groupname: this.Groupname, Channellist: Channels, userlist: this.Group.userlist };
     const Group = {new : NGroup, old: this.Group};
@@ -56,12 +57,12 @@ export class GroupviewComponent implements OnInit {
       .subscribe((data:any)=>{
         console.log(data.Group.Channellist)
         if(data.ok){
-          alert("remove");
+          alert("removed");
           this.getChannels();
         }
       })
   }
-  openchannel(Channel: { Channelname: string; Userlist: { Username: string; Password: string; Email: string; Role: string; }[]; chatList: { Message: string; User: { Username: string; Password: string; Email: string; Role: string; }; }[]; }){
+  openchannel(Channel: Channelobj){
     localStorage.clear
     localStorage.setItem('channel', JSON.stringify(Channel));
     this.router.navigateByUrl("/channelview");

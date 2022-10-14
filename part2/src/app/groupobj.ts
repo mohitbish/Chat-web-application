@@ -2,6 +2,6 @@ import { Userobj } from "./userobj";
 import { Channelobj } from "./channel";
 export interface Groupobj {
     Groupname: String
-    userlist : []
-    Channellist: []
+    userlist : Userobj[]
+    Channellist: Channelobj[]
 }

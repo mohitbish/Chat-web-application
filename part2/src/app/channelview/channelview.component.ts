@@ -38,7 +38,8 @@ export class ChannelviewComponent implements OnInit {
   }
 
   getgroup(){
-    this.httpClient.post(BACKEND_URL + '/get1channel', this.Groupname, httpOptions)
+    console.log("gkj")
+    this.httpClient.post(BACKEND_URL + '/get1group', this.Group, httpOptions)
       .subscribe((data:any)=>{
         console.log(data)
       })

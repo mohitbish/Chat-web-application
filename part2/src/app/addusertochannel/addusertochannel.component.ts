@@ -24,9 +24,9 @@ export class AddusertochannelComponent implements OnInit {
   Groupname= "";
   User= { Username : "", Password: "", Email : "", Role: ""}
   Chat = {Message:"", User:this.User }
-  Channel = {Channelname:"", Userlist : [this.User], chatList:[this.Chat]}
-  Channels =[this.Channel]
-  Group = {Groupname: this.Groupname,Channellist: [this.Channel], userlist:[this.User] };
+  Channel = {Channelname:"", Userlist : [], chatList:[]}
+  Channels = [this.Channel]
+  Group = {Groupname: this.Groupname, Channellist: [], userlist: [this.User] };
   constructor(private router:Router,  private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -42,9 +42,9 @@ export class AddusertochannelComponent implements OnInit {
   }
   
   addtochannle(user:Userobj ){
-    const Nuser  = { Username : user.Username, Password: user.Password, Email : user.Email, Role: user.Role}
-    const Userlist = this.Group.userlist.push(Nuser)
-    const NGroup = {Groupname: this.Group.Groupname, Channellist: this.Group.Channellist, userlist: Userlist };
+    console.log(this.Group.userlist)
+    const userlist = this.Group.userlist
+    const NGroup = {Groupname: this.Group.Groupname, Channellist: this.Group.Channellist, userlist: userlist };
     const Group = {new : NGroup, old: this.Group};
     this.httpClient.post(BACKEND_URL + '/addchannel', Group , httpOptions)
       .subscribe((data:any)=>{

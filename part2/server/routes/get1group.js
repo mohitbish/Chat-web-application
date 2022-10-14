@@ -15,8 +15,9 @@ module.exports = function(req, res) {
     // Get the documents collection
     const db = client.db(dbName);
     const collection = db.collection('Groups');
+    console.log(req.body)
     // Find some documents
-    collection.find({Username: req.body}).toArray(function(err, docs) {
+    collection.find({Username: req.body.Groupname}).toArray(function(err, docs) {
       assert.equal(err, null);
       data = JSON.stringify(docs)
       res.send(data);

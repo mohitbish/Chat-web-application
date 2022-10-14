@@ -22,32 +22,32 @@ export class AddchannelComponent implements OnInit {
   Channelname = " ";
   User= { Username : "", Password: "", Email : "", Role: ""}
   Chat = {Message:"", User:this.User }
-  Channel = {Channelname:"", Userlist : [this.User], chatList:[this.Chat]}
-  Channels =[this.Channel]
-  userlist = [this.User]
-  Group = {Groupname: this.Groupname, Channellist: [this.Channel], userlist:[this.User] };
+  Channel = {Channelname:"", Userlist : [], chatList:[]}
+  Channels: Channelobj[] = []
+  userlist: Userobj[] = []
+  Group = {Groupname: this.Groupname, Channellist: [], userlist:[] };
   constructor(private router:Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.Group = JSON.parse(localStorage.getItem('Group')!)
-    this.userlist = this.Group.userlist
     this.Groupname = this.Group.Groupname
     this.Channels = this.Group.Channellist
   }
 
   addChannel(){
-    const Channel = {Channelname: this.Channelname, Userlist : [this.User], chatList:[this.Chat]}
+    const Channel = {Channelname: this.Channelname, Userlist : [], chatList: []}
     this.Channels.push(Channel)
     
     const Channels = this.Channels
-    console.log(Channels)
-    const NGroup = {Groupname: this.Groupname, Channellist: Channels, userlist:this.userlist };
+    const NGroup = {Groupname: this.Groupname, Channellist: Channels, userlist:this.Group.userlist };
     const Group = {new : NGroup, old: this.Group};
     this.httpClient.post(BACKEND_URL + '/addchannel', Group , httpOptions)
       .subscribe((data:any)=>{
         console.log(data.Group.Channellist)
         if(data.ok){
-          alert("updated");
+          alert("Adeed");
+          localStorage.removeItem('Group')
+          localStorage.setItem('Group', JSON.stringify(data.Group));
           this.router.navigateByUrl("/groupview");
         }
       })

@@ -2,6 +2,6 @@ import { Userobj } from "./userobj"
 import { Chatobj } from "./chat"
 export interface Channelobj {
     Channelname: String
-    Userlist : []
-    chatList:[]
+    Userlist : Userobj[]
+    chatList: Chatobj[]
 }

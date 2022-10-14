@@ -24,7 +24,7 @@ export class AddgroupComponent implements OnInit {
   Groupname: String = "";
   User: Userobj = { Username : "", Password: "", Email : "", Role: ""}
   Chat: Chatobj = {Message:"", User:this.User }
-  Channel: Channelobj = {Channelname:"", Userlist : [this.User], chatList:[this.Chat]}
+  Channel: Channelobj = {Channelname:"", Userlist : [], chatList: []}
   
 
   constructor(private router:Router, private httpClient: HttpClient) { }
