@@ -22,15 +22,16 @@ export class AddusertochannelComponent implements OnInit {
   users: Userobj[]= [];
   updateuserobj: Userobj[]= [];
   Groupname= "";
-  User= { Username : "", Password: "", Email : "", Role: ""}
-  Chat = {Message:"", User:this.User }
+  User: Userobj= { Username : "", Password: "", Email : "", Role: ""}
+  Chat: Chatobj = {Message:"", User:this.User }
   Channel = {Channelname:"", Userlist : [], chatList:[]}
-  Channels = [this.Channel]
-  Group = {Groupname: this.Groupname, Channellist: [], userlist: [this.User] };
+  Gusers: Userobj[]= [];
+  Group = {Groupname: this.Groupname, Channellist: [], userlist: [] };
   constructor(private router:Router,  private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     this.Group = JSON.parse(localStorage.getItem('Group')!);
+    this.Gusers = this.Group.userlist
     this.getusers()
   }
   getusers(){
@@ -42,8 +43,8 @@ export class AddusertochannelComponent implements OnInit {
   }
   
   addtochannle(user:Userobj ){
-    console.log(this.Group.userlist)
-    const userlist = this.Group.userlist
+    this.Gusers.push(user)
+    const userlist = this.Gusers
     const NGroup = {Groupname: this.Group.Groupname, Channellist: this.Group.Channellist, userlist: userlist };
     const Group = {new : NGroup, old: this.Group};
     this.httpClient.post(BACKEND_URL + '/addchannel', Group , httpOptions)
@@ -51,6 +52,8 @@ export class AddusertochannelComponent implements OnInit {
         console.log(data.Group.Channellist)
         if(data.ok){
           alert("added");
+          localStorage.removeItem('Group')
+          localStorage.setItem('Group', JSON.stringify(data.Group));
           this.router.navigateByUrl("/channelview");
         }
       })

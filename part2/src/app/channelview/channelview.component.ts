@@ -20,29 +20,46 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 export class ChannelviewComponent implements OnInit {
 
-  Groupname= "";
-  User= { Username : "", Password: "", Email : "", Role: ""}
-  Chat = {Message:"", User:this.User }
-  Channel = {Channelname:"", Userlist : [this.User], chatList:[this.Chat]}
-  Channels =[this.Channel]
-  Group = {Groupname: this.Groupname,Channellist: [this.Channel], userlist:[this.User] };
+  Groupname = "";
+  User: Userobj= { Username : "", Password: "", Email : "", Role: ""}
+  Chat: Chatobj = {Message:"", User:this.User }
+  Channel = {Channelname:"", Userlist : [], chatList:[]}
+  Channels: Channelobj[] =[]
+  Gusers: Userobj[] = []
+  Group = {Groupname: this.Groupname,Channellist: [], userlist:[] };
 
   constructor(private router:Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     console.log( JSON.parse(localStorage.getItem('Group')!))
-    console.log( JSON.parse(localStorage.getItem('channel')!))
-    this.Group = JSON.parse(localStorage.getItem('Group')!)
-    this.Groupname = this.Group.Groupname
-    this.getgroup();
+    this.get1group(JSON.parse(localStorage.getItem('Group')!))
   }
 
-  getgroup(){
-    console.log("gkj")
-    this.httpClient.post(BACKEND_URL + '/get1group', this.Group, httpOptions)
+  removefromchannel(guser: Userobj){
+    const Gusers = this.Gusers.filter(data => data.Username != guser.Username);
+    const NGroup = {Groupname: this.Groupname, Channellist: this.Group.Channellist, userlist: Gusers };
+    const Group = {new : NGroup, old: this.Group};
+    this.httpClient.post(BACKEND_URL + '/addchannel', Group , httpOptions)
+      .subscribe((data:any)=>{
+        if(data.ok){
+          alert("removed");
+          this.get1group(data.Group)
+        }
+      })
+  }
+
+  get1group(Group: Groupobj){
+    this.httpClient.post(BACKEND_URL + '/get1group', Group, httpOptions)
       .subscribe((data:any)=>{
         console.log(data)
+        this.Group = data[0]
+        this.Gusers = data[0].userlist
       })
+  }
+  adduser(){
+    localStorage.removeItem('Group')
+    localStorage.setItem('Group', JSON.stringify(this.Group));
+    this.router.navigateByUrl("/addusertochannel");
   }
 
 }

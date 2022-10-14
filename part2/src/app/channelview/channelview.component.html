@@ -1,1 +1,19 @@
-<li class="active"><a class="nav-link" routerLink="/addusertochannel">Add user to Channel</a></li> 
+
+<button (click) = "adduser()"class= "btn btn-danger">Add user to Channel</button>
+<table class ="table table-hover">
+    <thead>
+        <tr>
+            <td>Username</td>
+            <td>Email</td>
+            <td>Role</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Guser of Gusers">
+            <td> {{Guser.Username}}</td>
+            <td> {{Guser.Email}}</td>
+            <td> {{Guser.Role}}</td>
+            <td> <button (click) = "removefromchannel(Guser)"class= "btn btn-danger">Remove</button></td>
+        </tr>
+    </tbody>
+</table>
