@@ -1,6 +1,6 @@
 export interface Userobj {
-    Username : String
-    Password: String
-    Email : String
-    Role: String
+    Username : string
+    Password: string
+    Email : string
+    Role: string
 }

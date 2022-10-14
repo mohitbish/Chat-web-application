@@ -32,7 +32,6 @@ export class GroupviewComponent implements OnInit {
     this.Groupname = this.Group.Groupname
     console.log((this.Group))
     console.log(this.Channels)
-    
     this.getChannels()
   }
   addChannel(){

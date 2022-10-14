@@ -14,6 +14,7 @@ import { UserviewComponent } from './userview/userview.component';
 import { GroupviewComponent } from './groupview/groupview.component';
 import { AddchannelComponent } from './addchannel/addchannel.component';
 import { ChannelviewComponent } from './channelview/channelview.component';
+import { AddusertochannelComponent } from './addusertochannel/addusertochannel.component';
 
 
 const routes: Routes = [{path:'login', component:LoginComponent},
@@ -29,7 +30,8 @@ const routes: Routes = [{path:'login', component:LoginComponent},
                         {path: 'userview', component: UserviewComponent},
                         {path: 'groupview', component: GroupviewComponent},
                         {path: 'addchannel', component: AddchannelComponent},
-                        {path: 'channelview', component: ChannelviewComponent}
+                        {path: 'channelview', component: ChannelviewComponent},
+                        {path:'addusertochannel', component: AddusertochannelComponent}
 
                       ];
 
