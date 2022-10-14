@@ -13,6 +13,7 @@ import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { UserviewComponent } from './userview/userview.component';
 import { GroupviewComponent } from './groupview/groupview.component';
 import { AddchannelComponent } from './addchannel/addchannel.component';
+import { ChannelviewComponent } from './channelview/channelview.component';
 
 
 const routes: Routes = [{path:'login', component:LoginComponent},
@@ -27,7 +28,8 @@ const routes: Routes = [{path:'login', component:LoginComponent},
                         {path: 'updateuser', component: UpdateuserComponent},
                         {path: 'userview', component: UserviewComponent},
                         {path: 'groupview', component: GroupviewComponent},
-                        {path: 'addchannel', component: AddchannelComponent}
+                        {path: 'addchannel', component: AddchannelComponent},
+                        {path: 'channelview', component: ChannelviewComponent}
 
                       ];
 
