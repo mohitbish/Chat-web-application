@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { SocketService } from './services/socket.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +22,7 @@ import { GroupviewComponent } from './groupview/groupview.component';
 import { AddchannelComponent } from './addchannel/addchannel.component';
 import { ChannelviewComponent } from './channelview/channelview.component';
 import { AddusertochannelComponent } from './addusertochannel/addusertochannel.component';
+
 
 
 @NgModule({
@@ -46,9 +49,10 @@ import { AddusertochannelComponent } from './addusertochannel/addusertochannel.c
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

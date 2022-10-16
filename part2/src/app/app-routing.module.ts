@@ -15,7 +15,7 @@ import { GroupviewComponent } from './groupview/groupview.component';
 import { AddchannelComponent } from './addchannel/addchannel.component';
 import { ChannelviewComponent } from './channelview/channelview.component';
 import { AddusertochannelComponent } from './addusertochannel/addusertochannel.component';
-import{}
+
 
 
 const routes: Routes = [{path:'login', component:LoginComponent},
