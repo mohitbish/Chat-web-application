@@ -39,7 +39,6 @@ export class ChannelviewComponent implements OnInit {
     this.Channel =JSON.parse(localStorage.getItem('channel')!)
     this.Channels = this.Group.Channellist
     this.channelname = this.Channel.Channelname
-    this.chat()
   }
 
   removefromchannel(guser: Userobj){
@@ -51,7 +50,6 @@ export class ChannelviewComponent implements OnInit {
         if(data.ok){
           alert("removed");
           this.get1group(data.Group)
-          this.chat()
         }
       })
   }
@@ -63,6 +61,9 @@ export class ChannelviewComponent implements OnInit {
         this.Group = data[0]
         this.Gusers = data[0].userlist
         this.Channels = data[0].Channellist
+        const channels: Channelobj[] = this.Channels.filter(data => data.Channelname == this.channelname);
+        const channel = channels[0]
+        this.chatlist = channel.chatList
       })
   }
   adduser(){
@@ -89,15 +90,25 @@ export class ChannelviewComponent implements OnInit {
       .subscribe((data:any)=>{
         if(data.ok){
           this.get1group(data.Group)
-          this.chat()
         }
       })
   }
 
-  chat(){
-    const channel: Channelobj[] = this.Channels.filter(data => data.Channelname == this.channelname);
-    this.chatlist.push(channel)
-    console.log(channel)
+  removemessage(chat: Chatobj){
+    const chatlist = this.chatlist.filter(data => data.Message != chat.Message);
+    const channel: Channelobj = {Channelname : this.channelname, Userlist : [], chatList: chatlist }
+    const channels = this.Channels.filter(data => data.Channelname != this.channelname);
+    channels.push(channel)
+    const NGroup = {Groupname: this.Groupname, Channellist: channels, userlist: this.Gusers };
+    const Group = {new : NGroup, old: this.Group};
+    this.httpClient.post(BACKEND_URL + '/addchannel', Group , httpOptions)
+      .subscribe((data:any)=>{
+        if(data.ok){
+          this.get1group(data.Group)
+        }
+      })
+
   }
+
 
 }

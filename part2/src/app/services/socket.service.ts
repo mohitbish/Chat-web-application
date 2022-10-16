@@ -11,7 +11,7 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 
 export class SocketService {
-  /*
+  
   private socket;
   constructor() { }
 
@@ -30,6 +30,6 @@ export class SocketService {
         observer.next(data)
       })
     })
-  }*/
+  }
 
 }
