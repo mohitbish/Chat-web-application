@@ -15,3 +15,4 @@ server setup
     npm install body-parser --save
     npm install cors --save
     npm install mangodb
+    npm install socket.io

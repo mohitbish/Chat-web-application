@@ -15,6 +15,18 @@ const cors = require('cors');
 
 app.use(cors());
 
+const io = require('socket.io')(http,{
+    cors :{
+        origin: "http://localhost:4200",
+        methods :["GET", "POST"]
+    }
+})
+
+
+const sockets = require('./socket')
+sockets.connect(io,PORT)
+
+
 //Enable CORS for all HTTP methods
 
 app.use(function(req, res, next) {
@@ -26,6 +38,8 @@ app.use(function(req, res, next) {
 
 
 const bodyParser = require("body-parser");
+const { METHODS } = require('http');
+const { Socket } = require('socket.io');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -37,9 +51,13 @@ app.use(bodyParser.json());
 const httpServer = http.Server(app);
 
 
+
+
 const https = require('https'),
 httpsServer = https.createServer(app);
+
 httpServer.listen(PORT, function() {
+
     console.log(`http Server listening on port: ${PORT}`);
 });
 

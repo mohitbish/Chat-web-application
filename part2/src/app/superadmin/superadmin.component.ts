@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-superadmin',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuperadminComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,  private httpClient: HttpClient) { }
 
   ngOnInit(): void {
   }
