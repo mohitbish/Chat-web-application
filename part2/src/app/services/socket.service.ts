@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { observable, Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
+import { Socket } from 'socket.io';
 
 import io from 'socket.io-client';
 
@@ -10,6 +11,7 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 
 export class SocketService {
+  /*
   private socket;
   constructor() { }
 
@@ -28,6 +30,6 @@ export class SocketService {
         observer.next(data)
       })
     })
-  }
+  }*/
 
 }

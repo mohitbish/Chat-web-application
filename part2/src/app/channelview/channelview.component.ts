@@ -21,18 +21,25 @@ const BACKEND_URL = 'http://localhost:3000';
 export class ChannelviewComponent implements OnInit {
 
   Groupname = "";
+  channelname = ""
+  Message = "";
   User: Userobj= { Username : "", Password: "", Email : "", Role: ""}
   Chat: Chatobj = {Message:"", User:this.User }
-  Channel = {Channelname:"", Userlist : [], chatList:[]}
+  Channel: Channelobj = {Channelname:"", Userlist : [], chatList:[]}
   Channels: Channelobj[] =[]
   Gusers: Userobj[] = []
-  Group = {Groupname: this.Groupname,Channellist: [], userlist:[] };
+  chatlist : Chatobj[]=[]
+  Group = {Groupname: this.Groupname, Channellist: [], userlist:[] };
 
   constructor(private router:Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     console.log( JSON.parse(localStorage.getItem('Group')!))
     this.get1group(JSON.parse(localStorage.getItem('Group')!))
+    this.Channel =JSON.parse(localStorage.getItem('channel')!)
+    this.Channels = this.Group.Channellist
+    this.channelname = this.Channel.Channelname
+    this.chat()
   }
 
   removefromchannel(guser: Userobj){
@@ -44,6 +51,7 @@ export class ChannelviewComponent implements OnInit {
         if(data.ok){
           alert("removed");
           this.get1group(data.Group)
+          this.chat()
         }
       })
   }
@@ -54,12 +62,42 @@ export class ChannelviewComponent implements OnInit {
         console.log(data)
         this.Group = data[0]
         this.Gusers = data[0].userlist
+        this.Channels = data[0].Channellist
       })
   }
   adduser(){
     localStorage.removeItem('Group')
     localStorage.setItem('Group', JSON.stringify(this.Group));
     this.router.navigateByUrl("/addusertochannel");
+  }
+
+  post(){
+    const message = this.Message
+    const user:Userobj = JSON.parse(localStorage.getItem('user')!)
+    
+
+    const Nuser: Userobj = user
+    const Nchat: Chatobj = {Message: message , User: Nuser }
+    console.log(Nchat)
+    this.chatlist.push(Nchat)
+    const channel: Channelobj = {Channelname : this.channelname, Userlist : [], chatList: this.chatlist }
+    const channels = this.Channels.filter(data => data.Channelname != this.channelname);
+    channels.push(channel)
+    const NGroup = {Groupname: this.Groupname, Channellist: channels, userlist: this.Gusers };
+    const Group = {new : NGroup, old: this.Group};
+    this.httpClient.post(BACKEND_URL + '/addchannel', Group , httpOptions)
+      .subscribe((data:any)=>{
+        if(data.ok){
+          this.get1group(data.Group)
+          this.chat()
+        }
+      })
+  }
+
+  chat(){
+    const channel: Channelobj[] = this.Channels.filter(data => data.Channelname == this.channelname);
+    this.chatlist.push(channel)
+    console.log(channel)
   }
 
 }
