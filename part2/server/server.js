@@ -15,16 +15,9 @@ const cors = require('cors');
 
 app.use(cors());
 
-const io = require('socket.io')(http,{
-    cors :{
-        origin: "http://localhost:4200",
-        methods :["GET", "POST"]
-    }
-})
 
 
-const sockets = require('./socket')
-sockets.connect(io,PORT)
+
 
 
 //Enable CORS for all HTTP methods
@@ -47,8 +40,20 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-
 const httpServer = http.Server(app);
+let socketIO = require('socket.io');
+let io = socketIO(httpServer);
+
+io.on('connection', (socket) => {
+    socket.on('join', (data) => {
+        socket.join(data.room);
+        socket.broadcast.to(data.room).emit('user joined');
+    });
+
+    socket.on('message', (data) => {
+        io.in(data.room).emit('new message', {user: data.user, message: data.message});
+    });
+});
 
 
 
@@ -64,6 +69,7 @@ httpServer.listen(PORT, function() {
 httpsServer.listen(PORT2, () => {
     console.log(`Starting htttps server at: ${PORT2}`);
 });
+
 
 
 app.post('/adduser', require('./routes/adduser'));

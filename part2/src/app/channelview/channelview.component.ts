@@ -6,6 +6,7 @@ import { Groupobj } from '../groupobj';
 import { Channelobj } from '../channel';
 import { Chatobj } from '../chat';
 
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})
 };
@@ -23,6 +24,7 @@ export class ChannelviewComponent implements OnInit {
   Groupname = "";
   channelname = ""
   Message = "";
+  ioConnection: any;
   User: Userobj= { Username : "", Password: "", Email : "", Role: ""}
   Chat: Chatobj = {Message:"", User:this.User }
   Channel: Channelobj = {Channelname:"", Userlist : [], chatList:[]}
@@ -31,7 +33,7 @@ export class ChannelviewComponent implements OnInit {
   chatlist : Chatobj[]=[]
   Group = {Groupname: this.Groupname, Channellist: [], userlist:[] };
 
-  constructor(private router:Router, private httpClient: HttpClient) { }
+  constructor(private router:Router, private httpClient: HttpClient ) { }
 
   ngOnInit(): void {
     console.log( JSON.parse(localStorage.getItem('Group')!))
@@ -39,6 +41,7 @@ export class ChannelviewComponent implements OnInit {
     this.Channel =JSON.parse(localStorage.getItem('channel')!)
     this.Channels = this.Group.Channellist
     this.channelname = this.Channel.Channelname
+
   }
 
   removefromchannel(guser: Userobj){
@@ -73,12 +76,15 @@ export class ChannelviewComponent implements OnInit {
   }
 
   post(){
+    
     const message = this.Message
     const user:Userobj = JSON.parse(localStorage.getItem('user')!)
     
 
     const Nuser: Userobj = user
     const Nchat: Chatobj = {Message: message , User: Nuser }
+    
+
     console.log(Nchat)
     this.chatlist.push(Nchat)
     const channel: Channelobj = {Channelname : this.channelname, Userlist : [], chatList: this.chatlist }
@@ -92,6 +98,7 @@ export class ChannelviewComponent implements OnInit {
           this.get1group(data.Group)
         }
       })
+
   }
 
   removemessage(chat: Chatobj){
@@ -109,6 +116,8 @@ export class ChannelviewComponent implements OnInit {
       })
 
   }
+
+
 
 
 }

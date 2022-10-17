@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { SocketService } from './services/socket.service';
+import { ChatService } from './services/chatservice.service'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,7 +52,7 @@ import { AddusertochannelComponent } from './addusertochannel/addusertochannel.c
     HttpClientModule,
     CommonModule
   ],
-  providers: [SocketService],
+  providers: [ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
