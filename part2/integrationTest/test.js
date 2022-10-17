@@ -70,16 +70,7 @@ describe('Server test', function() {
         });
     });
 
-    describe('/removegroup', () => {
-        it('it should remove a doc and send the rest', (done) => {
-            chai.request(app).post('/removegroup').type('form').send({ Groupname: "test", userlist : [], Channellist: []})
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    done();
-                });
-        });
-    });
+    
 
     describe('/getgroups', () => {
         it('it should GET all the groups', (done) => {
@@ -139,6 +130,30 @@ describe('Server test', function() {
                     res.body.ok = true   
                     res.body.Group.should.have.property('Groupname');
                     res.body.Group.should.have.property('Channellist');
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+    });
+
+    
+
+    describe('/getchannels', () => {
+        it('it should GET all the groups', (done) => {
+            chai.request(app).post('/getchannels').type('form').send({Groupname: "test", Channellist: [{Channelname: "test", Userlist : [], chatList: []}], userlist: [] })
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+    });
+
+    describe('/removegroup', () => {
+        it('it should remove a doc and send the rest', (done) => {
+            chai.request(app).post('/removegroup').type('form').send({ Groupname: "test", userlist : [], Channellist: []})
+                .end((err, res) => {
+                    res.should.have.status(200);
                     res.body.should.be.a('object');
                     done();
                 });
