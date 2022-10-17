@@ -38,7 +38,7 @@ export class AddgroupComponent implements OnInit {
     const Group = {Groupname: this.Groupname,Channellist: [this.Channel], userlist:[this.User] };
     this.httpClient.post(BACKEND_URL + '/addgroup', Group, httpOptions)
       .subscribe((data:any)=>{
-        console.log(data.ok);
+        console.log(data);
         if(data.ok){
           alert("added");
           this.router.navigateByUrl("/groupadmin");

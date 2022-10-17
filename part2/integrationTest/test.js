@@ -45,14 +45,36 @@ describe('Server test', function() {
 
 
     describe('/adduser', () => {
-        it('it should indert a doc', (done) => {
-            chai.request(app).post('/adduser').type('form').send({Username: "itest", Email: "i@g.com", Role: "user", Password: "" })
+        it('it should add a user', (done) => {
+            chai.request(app).post('/adduser').type('form').send({Username: "itest", Email: "i@g.com", Role: "user", Password: 222 })
                 .end((err, res) => {
                     res.should.have.status(200);
-                    res.body.product.should.have.property('Name');
-                    res.body.product.should.have.property('Price');
-                    res.body.product.should.have.property('units');
-                    res.body.product.should.have.property('Description');
+                    res.body.user.should.have.property('Username');
+                    res.body.user.should.have.property('Role');
+                    res.body.user.should.have.property('Email');
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+    });
+
+    describe('/addgroup', () => {
+        it('it should add a group', (done) => {
+            chai.request(app).post('/addgroup').type('form').send({Groupname: "test", Channellist: [], userlist: [] })
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.ok = true   
+                    res.body.group.should.have.property('Groupname');
+                    done();
+                });
+        });
+    });
+
+    describe('/removegroup', () => {
+        it('it should remove a doc', (done) => {
+            chai.request(app).post('/removegroup').type('form').send({ 'Name': 'Kiwi', 'Price': 3 , 'units': 4, 'Description' : "nlne"})
+                .end((err, res) => {
+                    res.should.have.status(200);
                     done();
                 });
         });
