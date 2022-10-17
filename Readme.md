@@ -1,4 +1,7 @@
 installation commands
+
+npm install --save-dev mocha
+
 angular setup
     ng new part2
     npm install bootstrap --save

@@ -1,5 +1,12 @@
 {
   "dependencies": {
     "bootstrap": "^5.2.2"
+  },
+  "devDependencies": {
+    "mocha": "^10.1.0"
+  },
+  "scripts": {
+    "test": "mocha ./integrationTest/test.js",
+    "unitTest": "mocha ./unitTest/test.js"
   }
 }
