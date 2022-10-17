@@ -1,11 +1,16 @@
 const express = require('express'),
-app = express();
+http = require('http')
+var app = express();
 
 fs = require('fs'),
-http = require('http'),
+
 PORT = 3000,
 PORT2 = 8888;
 
+
+ 
+
+var server = http.createServer(app);
 
 
 
@@ -14,10 +19,6 @@ PORT2 = 8888;
 const cors = require('cors');
 
 app.use(cors());
-
-
-
-
 
 
 //Enable CORS for all HTTP methods
@@ -36,24 +37,12 @@ const { Socket } = require('socket.io');
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
-
 app.use(bodyParser.json());
 
+
+
 const httpServer = http.Server(app);
-let socketIO = require('socket.io');
-let io = socketIO(httpServer);
 
-io.on('connection', (socket) => {
-    socket.on('join', (data) => {
-        socket.join(data.room);
-        socket.broadcast.to(data.room).emit('user joined');
-    });
-
-    socket.on('message', (data) => {
-        io.in(data.room).emit('new message', {user: data.user, message: data.message});
-    });
-});
 
 
 

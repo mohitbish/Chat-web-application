@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io, Socket } from 'socket.io-client';
 import { Chatobj } from '../chat';
+import { Userobj } from '../userobj';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,36 +11,27 @@ import { Chatobj } from '../chat';
 export class ChatService {
 
   private socket: Socket;
-  private url = 'http://localhost:3000'; // your server local path
-
+  url = 'http://localhost:3000';
+ 
   constructor() {
-    this.socket = io(this.url, {transports: ['websocket', 'polling', 'flashsocket']});
+    this.socket= io("ws://localhost:3000")
   }
 
+  initsocket(){
+    this.socket= io("ws://localhost:3000")
+    return ()=>{this.socket.disconnect();}
+  }
 
-  sendMessage(data: Chatobj): void {
-    this.socket.emit('message', data);
+  send(Message: string): void {
+    this.socket.emit('message', Message);
   }
 
   getMessage(): Observable<any> {
-    return new Observable<{user: string, message: string}>(observer => {
-      this.socket.on('new message', (data) => {
-        observer.next(data);
-      });
-
-      return () => {
-        this.socket.disconnect();
-      }
-    });
+    return new Observable(observer=>{
+      this.socket.on('message', (data)=>{observer.next(data)})
+    })
   }
 
-  getStorage() {
-    const storage: Chatobj = JSON.parse(localStorage.getItem('chats')!);
-    return storage 
-  }
-
-  setStorage(data: Chatobj) {
-    localStorage.setItem('chats', JSON.stringify(data));
-  }
+  
 
 }

@@ -5,6 +5,9 @@ import { Userobj } from '../userobj';
 import { Groupobj } from '../groupobj';
 import { Channelobj } from '../channel';
 import { Chatobj } from '../chat';
+import { ChatService } from '../services/chatservice.service';
+import { AfterViewInit, ViewChild } from '@angular/core';
+
 
 
 const httpOptions = {
@@ -24,6 +27,7 @@ export class ChannelviewComponent implements OnInit {
   Groupname = "";
   channelname = ""
   Message = "";
+  Messages :string[]=[]
   ioConnection: any;
   User: Userobj= { Username : "", Password: "", Email : "", Role: ""}
   Chat: Chatobj = {Message:"", User:this.User }
@@ -33,7 +37,8 @@ export class ChannelviewComponent implements OnInit {
   chatlist : Chatobj[]=[]
   Group = {Groupname: this.Groupname, Channellist: [], userlist:[] };
 
-  constructor(private router:Router, private httpClient: HttpClient ) { }
+
+  constructor(private router:Router, private httpClient: HttpClient, private chatService : ChatService ) { }
 
   ngOnInit(): void {
     console.log( JSON.parse(localStorage.getItem('Group')!))
@@ -42,7 +47,18 @@ export class ChannelviewComponent implements OnInit {
     this.Channels = this.Group.Channellist
     this.channelname = this.Channel.Channelname
 
+    
+
   }
+
+  initIOConnection(){
+    this.chatService.initsocket();
+    this.ioConnection = this.chatService.getMessage()
+      .subscribe((message:string)=>{
+        this.Messages.push(message)
+      })
+  }
+
 
   removefromchannel(guser: Userobj){
     const Gusers = this.Gusers.filter(data => data.Username != guser.Username);
@@ -76,15 +92,14 @@ export class ChannelviewComponent implements OnInit {
   }
 
   post(){
+
+    
+
     
     const message = this.Message
     const user:Userobj = JSON.parse(localStorage.getItem('user')!)
-    
-
     const Nuser: Userobj = user
     const Nchat: Chatobj = {Message: message , User: Nuser }
-    
-
     console.log(Nchat)
     this.chatlist.push(Nchat)
     const channel: Channelobj = {Channelname : this.channelname, Userlist : [], chatList: this.chatlist }
@@ -98,6 +113,7 @@ export class ChannelviewComponent implements OnInit {
           this.get1group(data.Group)
         }
       })
+
 
   }
 
