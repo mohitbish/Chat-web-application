@@ -71,14 +71,28 @@ describe('Server test', function() {
     });
 
     describe('/removegroup', () => {
-        it('it should remove a doc', (done) => {
-            chai.request(app).post('/removegroup').type('form').send({ 'Name': 'Kiwi', 'Price': 3 , 'units': 4, 'Description' : "nlne"})
+        it('it should remove a doc and send the rest', (done) => {
+            chai.request(app).post('/removegroup').type('form').send({ Groupname: "test", userlist : [], Channellist: []})
                 .end((err, res) => {
                     res.should.have.status(200);
+                    res.body.should.be.a('object');
                     done();
                 });
         });
     });
 
+    describe('/getgroups', () => {
+        it('it should GET all the groups', (done) => {
+            chai.request(app)
+                .get('/getgroups')
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+    });
+
+    
 
 });
