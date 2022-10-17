@@ -93,6 +93,45 @@ describe('Server test', function() {
         });
     });
 
+    describe('/removeuser', () => {
+        it('it should remove a user and send the rest', (done) => {
+            chai.request(app).post('/removeuser').type('form').send({Username: "itest", Email: "i@g.com", Role: "user", Password: 222 })
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+    });
+
     
+    describe('/getupdateuser', () => {
+        it('it should get a user', (done) => {
+            chai.request(app).post('/getupdateuser').type('form').send({Username: "Mohit", Email: "m@g.com", Role: "superadmin", Password: 222 })
+                .end((err, res) => {
+                    res.should.have.status(200);  
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+    });
+
+    describe('/updateuser', () => {
+        it('it should upadte get a user', (done) => {
+            chai.request(app).post('/updateuser').type('form').send({new : {Username: "Mohit", Email: "M@g.com", Role: "superadmin", Password: 222 }, old: {Username: "Mohit", Email: "m@g.com", Role: "superadmin", Password: 222 }})
+                .end((err, res) => {
+                    res.should.have.status(200);  
+                    res.body.ok = true   
+                    res.body.user.should.have.property('Username');
+                    res.body.user.should.have.property('Role');
+                    res.body.user.should.have.property('Email');
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+    });
+
+
+
 
 });
