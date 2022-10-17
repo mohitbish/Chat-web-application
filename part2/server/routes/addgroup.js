@@ -24,7 +24,7 @@ module.exports = function(req,res) {
     // Insert some documents
     collection.insertOne(Group, function(err, result) {
         if (err) throw err;
-        res.send(Group);
+        res.send({"ok":true, "group":Group});
         console.log("Group Added");
         
     });
