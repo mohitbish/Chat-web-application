@@ -24,6 +24,8 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
     this.getusers()
   }
+
+  // gets userslist from database
   getusers(){
     this.httpClient.get<Userobj[]>(BACKEND_URL + '/getusers')
       .subscribe((data:any)=>{
@@ -32,6 +34,7 @@ export class UsersComponent implements OnInit {
       })
   }
   
+  // removes users from database
   removeuser(user:Userobj){
     this.httpClient.post(BACKEND_URL + '/removeuser', user)
       .subscribe((data:any)=>{
@@ -39,6 +42,7 @@ export class UsersComponent implements OnInit {
       })
   }
   
+  // update user in database
   updateuser(user:Userobj){
     this.httpClient.post(BACKEND_URL + '/getupdateuser', user)
       .subscribe((data:any)=>{

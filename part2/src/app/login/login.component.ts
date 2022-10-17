@@ -25,21 +25,30 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  
+  //sets session storage for  user
   check(){
-    let user = {Username:this.Username, Password: this.Password};
-    this.httpClient.post(BACKEND_URL + '/login', user, httpOptions)
-      .subscribe((data:any)=>{
-        if (data.ok){
-          alert("correct");
-          console.log(data.user);
-          sessionStorage.setItem('Username', data.user.Username);
-          sessionStorage.setItem('Loginstatus',  data.ok);
-          sessionStorage.setItem('Role', data.user.Role);
-          localStorage.setItem('user', JSON.stringify(data.user));
-          this.router.navigateByUrl("/profile");
-        }
-        else { alert("Username or Password incorrect");} 
-      })
+    if(this.Username != "" && this.Password != ""){
+      let user = {Username:this.Username, Password: this.Password};
+      //returns the user if found, 
+      this.httpClient.post(BACKEND_URL + '/login', user, httpOptions)
+        .subscribe((data:any)=>{
+          if (data.ok){
+            alert("correct");
+            console.log(data.user);
+            //checks login credentials in database,
+            sessionStorage.setItem('Username', data.user.Username);
+            sessionStorage.setItem('Loginstatus',  data.ok);
+            sessionStorage.setItem('Role', data.user.Role);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            this.router.navigateByUrl("/profile");
+          }
+          else { alert("Username or Password incorrect");} 
+        })
+    }
+    else{
+      alert("Please input correct value")
+    }
   }
 
 }

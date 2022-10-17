@@ -22,11 +22,12 @@ export class ProfileComponent implements OnInit {
   
   constructor(private router: Router, private httpClient: HttpClient) { 
     console.log(sessionStorage.getItem('Role'))
+    //checks for login status
     if (!(sessionStorage.getItem('Loginstatus')=="true")){
       alert("login please");
       this.router.navigateByUrl("/login");
     }
-
+    //redirect to views according to Role
     if ((sessionStorage.getItem('Loginstatus')=="true") && (sessionStorage.getItem('Role')=="superadmin") ){
       this.router.navigateByUrl("/superadmin");
     }

@@ -34,11 +34,15 @@ export class GroupviewComponent implements OnInit {
     console.log(this.Channels)
     this.getChannels()
   }
+
+  //updates group to add channel
   addChannel(){
     localStorage.removeItem('Group')
     localStorage.setItem('Group', JSON.stringify(this.Group));
     this.router.navigateByUrl("/addchannel");
   }
+
+  //gets channellist from group
   getChannels(){
     const Group = this.Group
     this.httpClient.post(BACKEND_URL + '/getchannels', Group, httpOptions)
@@ -49,6 +53,7 @@ export class GroupviewComponent implements OnInit {
       })
   }
 
+  //updates group to remove 
   removechannel(channel: Channelobj){
     const Channels = this.Channels.filter(data => data.Channelname != channel.Channelname);
     const NGroup = {Groupname: this.Groupname, Channellist: Channels, userlist: this.Group.userlist };

@@ -34,6 +34,8 @@ export class UpdateuserComponent implements OnInit {
     this.Email = this.user.Email
     this.Role = this.user.Role
   }
+  
+  //updates user in database
   upadteuser(){
     let Nuser = { Username : this.Username,Password: this.Password, Email : this.Email, Role: this.Role};
     const prod = {new : Nuser, old: this.user};

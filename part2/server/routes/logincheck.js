@@ -15,13 +15,15 @@ module.exports = function(req, res) {
     // Get the documents collection
     const db = client.db(dbName);
     const collection = db.collection('Users');
-    console.log(req.body.Username)
     // Find some documents
     collection.find({Username: req.body.Username, Password: req.body.Password}).toArray(function(err, user) {
       assert.equal(err, null);
       console.log(user)
-      if (user == []){
-        res.send({"ok": false});
+      if(err){
+        console.log(err)
+      }
+      if(user[0] == [ ]){
+        console.log(err)
       }
       else{
         res.send({"ok":true, "user":user[0]});

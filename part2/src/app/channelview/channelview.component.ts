@@ -5,8 +5,6 @@ import { Userobj } from '../userobj';
 import { Groupobj } from '../groupobj';
 import { Channelobj } from '../channel';
 import { Chatobj } from '../chat';
-import { ChatService } from '../services/chatservice.service';
-import { AfterViewInit, ViewChild } from '@angular/core';
 
 
 
@@ -38,7 +36,7 @@ export class ChannelviewComponent implements OnInit {
   Group = {Groupname: this.Groupname, Channellist: [], userlist:[] };
 
 
-  constructor(private router:Router, private httpClient: HttpClient, private chatService : ChatService ) { }
+  constructor(private router:Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
     console.log( JSON.parse(localStorage.getItem('Group')!))
@@ -51,13 +49,7 @@ export class ChannelviewComponent implements OnInit {
 
   }
 
-  initIOConnection(){
-    this.chatService.initsocket();
-    this.ioConnection = this.chatService.getMessage()
-      .subscribe((message:string)=>{
-        this.Messages.push(message)
-      })
-  }
+  
 
 
   removefromchannel(guser: Userobj){
@@ -92,8 +84,6 @@ export class ChannelviewComponent implements OnInit {
   }
 
   post(){
-
-    
 
     
     const message = this.Message
