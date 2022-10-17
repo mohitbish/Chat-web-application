@@ -131,6 +131,20 @@ describe('Server test', function() {
         });
     });
 
+    describe('/addchannel', () => {
+        it('it should add a channel', (done) => {
+            chai.request(app).post('/addchannel').type('form').send( {new : {Groupname: "test", Channellist: [{Channelname: "test", Userlist : [], chatList: []}], userlist: [] }, old: {Groupname: "test", Channellist: [], userlist: [] }})
+                .end((err, res) => {
+                    res.should.have.status(200);
+                    res.body.ok = true   
+                    res.body.Group.should.have.property('Groupname');
+                    res.body.Group.should.have.property('Channellist');
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+    });
+
 
 
 
