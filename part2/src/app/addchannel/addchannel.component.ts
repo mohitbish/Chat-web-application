@@ -34,6 +34,7 @@ export class AddchannelComponent implements OnInit {
     this.Channels = this.Group.Channellist
   }
 
+  //adds channel to the group
   addChannel(){
     const Channel = {Channelname: this.Channelname, Userlist : [], chatList: []}
     this.Channels.push(Channel)

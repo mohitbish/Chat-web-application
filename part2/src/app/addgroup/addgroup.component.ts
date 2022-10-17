@@ -31,6 +31,8 @@ export class AddgroupComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  //add new group to database
   addgroup(){
     console.log(this.Groupname)
     const Group = {Groupname: this.Groupname,Channellist: [this.Channel], userlist:[this.User] };

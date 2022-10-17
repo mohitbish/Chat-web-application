@@ -25,6 +25,8 @@ export class AdduserComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  // add new user to database
   adduser(){
     let user = {Username: this.Username, Email : this.Email, Role: this.Role, Password: this.Password}
     this.httpClient.post(BACKEND_URL + '/adduser', user, httpOptions)

@@ -67,6 +67,8 @@ export class GroupviewComponent implements OnInit {
         }
       })
   }
+
+  //redirects to channel
   openchannel(Channel: Channelobj){
     localStorage.clear
     localStorage.setItem('channel', JSON.stringify(Channel));

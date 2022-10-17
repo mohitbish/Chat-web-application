@@ -51,7 +51,7 @@ export class ChannelviewComponent implements OnInit {
 
   
 
-
+  //remove user from channel
   removefromchannel(guser: Userobj){
     const Gusers = this.Gusers.filter(data => data.Username != guser.Username);
     const NGroup = {Groupname: this.Groupname, Channellist: this.Group.Channellist, userlist: Gusers };
@@ -65,6 +65,7 @@ export class ChannelviewComponent implements OnInit {
       })
   }
 
+  //gets groups
   get1group(Group: Groupobj){
     this.httpClient.post(BACKEND_URL + '/get1group', Group, httpOptions)
       .subscribe((data:any)=>{
@@ -77,15 +78,15 @@ export class ChannelviewComponent implements OnInit {
         this.chatlist = channel.chatList
       })
   }
+  //add users
   adduser(){
     localStorage.removeItem('Group')
     localStorage.setItem('Group', JSON.stringify(this.Group));
     this.router.navigateByUrl("/addusertochannel");
   }
 
+  //posts message and updates group 
   post(){
-
-    
     const message = this.Message
     const user:Userobj = JSON.parse(localStorage.getItem('user')!)
     const Nuser: Userobj = user
@@ -107,6 +108,7 @@ export class ChannelviewComponent implements OnInit {
 
   }
 
+  //upadte group to remove message
   removemessage(chat: Chatobj){
     const chatlist = this.chatlist.filter(data => data.Message != chat.Message);
     const channel: Channelobj = {Channelname : this.channelname, Userlist : [], chatList: chatlist }

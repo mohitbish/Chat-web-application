@@ -42,6 +42,7 @@ export class AddusertochannelComponent implements OnInit {
       })
   }
   
+  //updates userlist in channel and updates group
   addtochannle(user:Userobj ){
     this.Gusers.push(user)
     const userlist = this.Gusers

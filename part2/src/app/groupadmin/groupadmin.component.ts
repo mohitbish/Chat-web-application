@@ -27,6 +27,7 @@ export class GroupadminComponent implements OnInit {
     this.getGroups();
   }
 
+  //gets groups from database
   getGroups(){
     this.httpClient.get<Groupobj[]>(BACKEND_URL + '/getgroups')
       .subscribe((data:any)=>{
@@ -34,12 +35,16 @@ export class GroupadminComponent implements OnInit {
         console.log(typeof(data), data);
       })
   }
+
+  //remove group
   removegroup(Group:Groupobj){
     this.httpClient.post(BACKEND_URL + '/removegroup', Group)
       .subscribe((data:any)=>{
         this.Groups = data;
       })
   }
+
+  //opens groupview
   opengroup(Group: Groupobj){
     localStorage.clear
     localStorage.setItem('Group', JSON.stringify(Group));
