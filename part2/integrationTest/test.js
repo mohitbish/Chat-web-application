@@ -144,10 +144,24 @@ describe('Server test', function() {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
+                    console.log(res.body)
                     done();
                 });
         });
     });
+
+    
+    describe('/get1group', () => {
+        it('it should get a group', (done) => {
+            chai.request(app).post('/get1group').type('form').send({Groupname: "test", Channellist: [{Channelname: "test", Userlist : [], chatList: []}], userlist: [] })
+                .end((err, res) => {
+                    res.should.have.status(200);  
+                    res.body.should.be.a('object');
+                    done();
+                });
+        });
+    });
+
 
     describe('/removegroup', () => {
         it('it should remove a doc and send the rest', (done) => {
