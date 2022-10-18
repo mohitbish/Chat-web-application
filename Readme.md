@@ -53,3 +53,52 @@ git llink: "https://github.com/mohitbish/SFA2.git"
 
 
 
+DATA STRUCTURES
+
+Group, User, Channel, Chat has data type of Objects. They are added with export interface to use in components.
+
+Group contains a groupname, array of Userobj and array of Channelobj.
+Groupobj : { Groupname: String, userlist : Userobj[], Channellist: Channelobj[] }
+
+Channel contains a Channelname , array of Userobj and array of Chatobj.
+Channelobj: {Channelname: string,  Userlist : Userobj[], chatList: Chatobj[]}
+
+User contiains property username, password, email and role.
+Userobj: {Username : string, Password: string, Email : string, Role: string}
+
+Chat contains property Message and User
+Chatobj { Message: String, User: Userobj}
+
+
+
+Documentation - REST API
+
+The Angular front end communicate with the Node.js server. Http server is listening on port3000 and angular is running on port 4200.Server folder has a subfolder containing all the routes which recive and send data to angular.
+
+Routes:
+('/adduser') => Parameters: Userobj, 
+                Action: adds user to Users collection in database ,
+                Send: added Userobj
+
+('/login') =>   Parameters: {Username; "", Password = ""},
+                Action: checks Users collection in database to find the user ,
+                Send:  if found{userobj} else false
+
+('/removegroup') => Parameters: groupobj,
+                    Action: removes group from Groups collection in database ,
+                    Send:  Sends the updates Groups collection.
+
+
+
+
+app.get('/getgroups', require('./routes/getgroups'));
+app.post('/removeuser', require('./routes/removeuser'));
+app.get('/getusers', require('./routes/getusers'));
+app.post('/getupdateuser', require('./routes/getupdateuser'));
+app.post('/updateuser', require('./routes/updateuser'));
+app.post('/addchannel', require('./routes/addchannel'));
+app.post('/getchannels', require('./routes/getchannels'));
+app.post('/get1group', require('./routes/get1group'));
+
+
+
