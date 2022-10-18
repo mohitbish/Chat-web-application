@@ -77,28 +77,49 @@ The Angular front end communicate with the Node.js server. Http server is listen
 
 Routes:
 ('/adduser') => Parameters: Userobj, 
-                Action: adds user to Users collection in database ,
+                Action: adds user to Users collection in database 
                 Send: added Userobj
 
 ('/login') =>   Parameters: {Username; "", Password = ""},
-                Action: checks Users collection in database to find the user ,
+                Action: checks Users collection in database to find the user 
                 Send:  if found{userobj} else false
 
 ('/removegroup') => Parameters: groupobj,
-                    Action: removes group from Groups collection in database ,
+                    Action: removes group from Groups collection in database 
                     Send:  Sends the updates Groups collection.
 
+('/getgroups') =>   Parameters: none, (method: GET)
+                    Action: finds Groups collection in database
+                    Send:  Sends the Groups collection.
+
+('/removeuser') =>  Parameters: Userobj
+                    Action: removes user from Users collection
+                    Send:  Sends the updated Users  collection.
 
 
+('getusers') =>     Parameters: none, (method: GET)
+                    Action: finds Users collection in databse,
+                    Send:  Sends the  Users  collection.
 
-app.get('/getgroups', require('./routes/getgroups'));
-app.post('/removeuser', require('./routes/removeuser'));
-app.get('/getusers', require('./routes/getusers'));
-app.post('/getupdateuser', require('./routes/getupdateuser'));
-app.post('/updateuser', require('./routes/updateuser'));
-app.post('/addchannel', require('./routes/addchannel'));
-app.post('/getchannels', require('./routes/getchannels'));
-app.post('/get1group', require('./routes/get1group'));
+
+('updateuser') =>    Parameters: {new:Userobj, old:Userobj]
+                        Action: updates user to new values 
+                        Send:  Sends the  updtes user 
+
+('addchannel') =>    Parameters: {new:Grouoobj, old:Groupobj]
+                        Action: updates Group to update the channellist 
+                        Send:  Sends the updated group 
+
+
+('getchannels') =>    Parameters: none, (method: GET)
+                      Action: finds Groups collection
+                      Send: Sends the groups 
+
+('get1group') =>    Parameters: Groupobj
+                    Action: finds group in groups collection
+                    Send: Sends the group if found. 
+
+
 
 
 
