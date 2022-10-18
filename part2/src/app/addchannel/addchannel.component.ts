@@ -40,7 +40,7 @@ export class AddchannelComponent implements OnInit {
     this.Channels.push(Channel)
     
     const Channels = this.Channels
-    const NGroup = {Groupname: this.Groupname, Channellist: Channels, userlist:this.Group.userlist };
+    const NGroup = {Groupname: this.Group.Groupname, Channellist: Channels, userlist:this.Group.userlist };
     const Group = {new : NGroup, old: this.Group};
     this.httpClient.post(BACKEND_URL + '/addchannel', Group , httpOptions)
       .subscribe((data:any)=>{

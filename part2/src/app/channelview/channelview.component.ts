@@ -54,7 +54,7 @@ export class ChannelviewComponent implements OnInit {
   //remove user from channel
   removefromchannel(guser: Userobj){
     const Gusers = this.Gusers.filter(data => data.Username != guser.Username);
-    const NGroup = {Groupname: this.Groupname, Channellist: this.Group.Channellist, userlist: Gusers };
+    const NGroup = {Groupname: this.Group.Groupname, Channellist: this.Group.Channellist, userlist: Gusers };
     const Group = {new : NGroup, old: this.Group};
     this.httpClient.post(BACKEND_URL + '/addchannel', Group , httpOptions)
       .subscribe((data:any)=>{
