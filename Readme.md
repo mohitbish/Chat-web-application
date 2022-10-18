@@ -121,5 +121,31 @@ Routes:
 
 
 
+Documentation - Angular Architecture
 
+Agular setup contians components, services and object models.
 
+Components
+    login => shows login form, send login request to server and redirects after response
+    logout => checks loginstatus and clears the local and session storage
+    profile => checks loginstatus and seesion storage and redirects acoording to user role
+    adduser => Shows form for adding user, sends userobj to server and redirects upon addeing
+    superadmin => shows router links to adduser and userlist
+    Users => shows the list of all the users. Controls the function to remove a user
+    updateuser => shows the form  with old values, send request to upadte to new values.
+    groupadmin => shows the list of gropus and link to add groups
+    addgroup => shows form to add new group and send request to server
+    addchannel => shows form to add channel and send request to update group
+    addusertochannel => shows list of all userr and send request add user to channel
+    groupview => shows all the channels and controls the function to remove and open the channel
+    channelview => shows all the chats and users in the channel, shows the links to adduser and form to send chat
+
+Services
+    chatservice => manages socket and its methods for chatobj.
+
+object models
+
+    Groupobj : { Groupname: String, userlist : Userobj[], Channellist: Channelobj[] }
+    Channelobj: {Channelname: string,  Userlist : Userobj[], chatList: Chatobj[]}
+    Userobj: {Username : string, Password: string, Email : string, Role: string}
+    Chatobj { Message: String, User: Userobj}

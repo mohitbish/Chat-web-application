@@ -19,6 +19,7 @@ export class LogoutComponent implements OnInit {
     //clears storage
     else{
       sessionStorage.clear();
+      localStorage.clear();
       this.router.navigateByUrl("/");
     }
   }
