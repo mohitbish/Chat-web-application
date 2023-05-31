@@ -1,4 +1,5 @@
 INSTALLATION 
+brew services start mongodb-community@6.0
 
 TEST SETUP
 npm install --save-dev mocha
