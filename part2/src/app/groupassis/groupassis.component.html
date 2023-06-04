@@ -1,1 +1,15 @@
-<p>groupassis works!</p>
+
+<table class ="table table-hover">
+    <thead>
+        <tr>
+            <td>GroupName</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Group of Groups">
+            <td> {{Group.Groupname}}</td>
+            <td> <button (click) = "opengroup(Group)"class= "btn btn-danger">open</button></td>
+        </tr>
+    </tbody>
+</table>
+

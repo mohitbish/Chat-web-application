@@ -5,6 +5,7 @@ TEST SETUP
 npm install --save-dev mocha
 
 ANGULAR SETUP 
+    npm install bootstrap@3
     ng new part2
     npm install bootstrap --save
     ng generate component login
