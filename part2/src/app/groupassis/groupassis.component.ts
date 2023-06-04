@@ -22,7 +22,16 @@ const BACKEND_URL = 'http://localhost:3000';
 export class GroupassisComponent implements OnInit {
 
   Groups: Groupobj[] = []
-  constructor(private router:Router, private httpClient: HttpClient) { }
+  AllGroups: Groupobj[] = []
+  User = {_id: "",Username : "", Password: "", Email : "", Role: ""}
+  
+  constructor(private router:Router, private httpClient: HttpClient) {
+    this.User.Email = sessionStorage.getItem('Email')
+    this.User.Password = sessionStorage.getItem('Password')
+    this.User.Role = sessionStorage.getItem('Role')
+    this.User.Username = sessionStorage.getItem('Username')
+    this.User._id = sessionStorage.getItem('_id')
+   }
 
   ngOnInit(): void {
     this.getGroups();
@@ -31,9 +40,18 @@ export class GroupassisComponent implements OnInit {
   getGroups(){
     this.httpClient.get<Groupobj[]>(BACKEND_URL + '/getgroups')
       .subscribe((data:any)=>{
-        this.Groups = data;
+        this.AllGroups = data;
         console.log(typeof(data), data);
       })
+      console.log(this.User)
+      console.log(this.AllGroups)
+      this.AllGroups.forEach( g => {
+        if(g.userlist.includes(this.User)){
+          console.log(g)
+          this.Groups.push(g)
+        }
+      })
+      
   }
   
   opengroup(Group: Groupobj){

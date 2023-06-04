@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   Username ="";
   Password ="";
 
+
   constructor(private router:Router,  private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -38,8 +39,11 @@ export class LoginComponent implements OnInit {
             console.log(data.user);
             //checks login credentials in database,
             sessionStorage.setItem('Username', data.user.Username);
+            sessionStorage.setItem('Email', data.user.Email);
+            sessionStorage.setItem('Password', data.user.Password);
             sessionStorage.setItem('Loginstatus',  data.ok);
             sessionStorage.setItem('Role', data.user.Role);
+            sessionStorage.setItem('_id', data.user._id);
             localStorage.setItem('user', JSON.stringify(data.user));
             this.router.navigateByUrl("/profile");
           }
