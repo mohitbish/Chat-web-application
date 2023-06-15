@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
     if ((sessionStorage.getItem('Loginstatus')=="true") && (sessionStorage.getItem('Role')=="superadmin") ){
       this.router.navigateByUrl("/superadmin");
     }
-    if ((sessionStorage.getItem('Loginstatus')=="true") && (sessionStorage.getItem('Role')=="groupassis") ){
+    if ((sessionStorage.getItem('Loginstatus')=="true") && (sessionStorage.getItem('Role')=="user") ){
       this.router.navigateByUrl("/groupassis");
     }
   }
