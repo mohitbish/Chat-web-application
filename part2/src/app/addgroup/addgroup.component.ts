@@ -22,11 +22,6 @@ const BACKEND_URL = 'http://localhost:3000';
 export class AddgroupComponent implements OnInit {
 
   Groupname: String = "";
-  User: Userobj = { Username : "", Password: "", Email : "", Role: ""}
-  Chat: Chatobj = {Message:"", User:this.User }
-  Channel: Channelobj = {Channelname:"", Userlist : [], chatList: []}
-  
-
   constructor(private router:Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
@@ -35,7 +30,7 @@ export class AddgroupComponent implements OnInit {
   //add new group to database
   addgroup(){
     console.log(this.Groupname)
-    const Group = {Groupname: this.Groupname,Channellist: [this.Channel], userlist:[this.User] };
+    const Group = {Groupname: this.Groupname,Channellist: [], userlist:[] };
     this.httpClient.post(BACKEND_URL + '/addgroup', Group, httpOptions)
       .subscribe((data:any)=>{
         console.log(data);

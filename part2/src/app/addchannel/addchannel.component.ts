@@ -29,18 +29,19 @@ export class AddchannelComponent implements OnInit {
   constructor(private router:Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.Group = JSON.parse(localStorage.getItem('Group')!)
-    this.Groupname = this.Group.Groupname
-    this.Channels = this.Group.Channellist
+    this.Group = JSON.parse(localStorage.getItem('Group')!);
   }
 
   //adds channel to the group
-  addChannel(){
+  async addChannel(){
+
+    await this.getChannels();
+
     const Channel = {Channelname: this.Channelname, Userlist : [], chatList: []}
-    this.Channels.push(Channel)
+    await this.Channels.push(Channel)
+    console.log(this.Channels)
     
-    const Channels = this.Channels
-    const NGroup = {Groupname: this.Group.Groupname, Channellist: Channels, userlist:this.Group.userlist };
+    const NGroup = {Groupname: this.Group.Groupname, Channellist: this.Channels, userlist:this.Group.userlist };
     const Group = {new : NGroup, old: this.Group};
     this.httpClient.post(BACKEND_URL + '/addchannel', Group , httpOptions)
       .subscribe((data:any)=>{
@@ -52,5 +53,15 @@ export class AddchannelComponent implements OnInit {
           this.router.navigateByUrl("/groupview");
         }
       })
+  }
+
+
+  async getChannels() {
+    let data = await this.httpClient
+      .post(BACKEND_URL + '/getchannels', this.Group, httpOptions)
+      .toPromise();
+
+    this.Group = data[0]
+    this.Channels = this.Group.Channellist;
   }
 }

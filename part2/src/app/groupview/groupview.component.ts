@@ -22,8 +22,7 @@ export class GroupviewComponent implements OnInit {
   Groupname = '';
   User = { Username: '', Password: '', Email: '', Role: '' };
   Chat = { Message: '', User: this.User };
-  Channel = { Channelname: '', Userlist: [], chatList: [] };
-  Channels = [this.Channel];
+  Channels: Channelobj[] = [];
   Group = { Groupname: this.Groupname, Channellist: [], userlist: [] };
   constructor(private router: Router, private httpClient: HttpClient) {}
 
@@ -31,26 +30,25 @@ export class GroupviewComponent implements OnInit {
     this.Group = JSON.parse(localStorage.getItem('Group')!);
     this.Groupname = this.Group.Groupname;
     console.log(this.Group);
-    console.log(this.Channels);
     this.getChannels();
   }
 
   //updates group to add channel
   addChannel() {
     localStorage.removeItem('Group');
+    this.getChannels();
     localStorage.setItem('Group', JSON.stringify(this.Group));
     this.router.navigateByUrl('/addchannel');
   }
 
   //gets channellist from group
   async getChannels() {
-    const Group = JSON.parse(localStorage.getItem('Group')!);
     let data = await this.httpClient
-      .post(BACKEND_URL + '/getchannels', Group, httpOptions)
+      .post(BACKEND_URL + '/getchannels', this.Group, httpOptions)
       .toPromise();
-
-    this.Channels = data[0].Channellist;
-    
+    this.Group = data[0];
+    this.Channels = this.Group.Channellist
+    console.log(this.Group)
   }
 
   //updates group to remove
