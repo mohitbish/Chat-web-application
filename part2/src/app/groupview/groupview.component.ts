@@ -6,7 +6,6 @@ import { Groupobj } from '../groupobj';
 import { Channelobj } from '../channel';
 import { Chatobj } from '../chat';
 
-
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
@@ -47,8 +46,8 @@ export class GroupviewComponent implements OnInit {
       .post(BACKEND_URL + '/getchannels', this.Group, httpOptions)
       .toPromise();
     this.Group = data[0];
-    this.Channels = this.Group.Channellist
-    console.log(this.Group)
+    this.Channels = this.Group.Channellist;
+    console.log(this.Group);
   }
 
   //updates group to remove
