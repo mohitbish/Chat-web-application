@@ -21,6 +21,8 @@ ANGULAR SETUP
     ng generate component groupview
     ng generate component channelview
     ng generate component groupassis
+    ng generate component userchannelview
+    ng generate component usergroupview 
 
 
 SERVER SETUP
