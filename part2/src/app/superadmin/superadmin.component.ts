@@ -18,12 +18,10 @@ const BACKEND_URL = 'http://localhost:3000';
   styleUrls: ['./superadmin.component.css'],
 })
 export class SuperadminComponent implements OnInit {
-
   Groups: Groupobj[] = [];
   constructor(private router: Router, private httpClient: HttpClient) {}
 
   ngOnInit(): void {
-    
     this.getGroups();
   }
 
@@ -42,14 +40,12 @@ export class SuperadminComponent implements OnInit {
     this.router.navigateByUrl('/groupview');
   }
 
-  removegroup(Group: Groupobj) {
-    this.httpClient
-      .post(BACKEND_URL + '/removegroup', Group)
-      .subscribe((data: any) => {
-        alert('deleted');
-        console.log(data)
-        this.Groups = data;
-        this.getGroups();
-      });
+  async removegroup(Group: Groupobj) {
+    let data = await this.httpClient
+      .post(BACKEND_URL + '/removegroup', Group, httpOptions)
+      .toPromise();
+
+    alert('deleted');
+    this.getGroups();
   }
 }
