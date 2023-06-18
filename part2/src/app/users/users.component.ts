@@ -40,6 +40,7 @@ export class UsersComponent implements OnInit {
       .subscribe((data:any)=>{
         this.users = data;
       })
+      this.getusers();
   }
   
   // update user in database
