@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Userobj } from '../userobj';
+import { Userobj } from '../../userobj';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json'})

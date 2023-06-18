@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Userobj } from '../userobj';
-import { Groupobj } from '../groupobj';
-import { Channelobj } from '../channel';
-import { Chatobj } from '../chat';
+import { Userobj } from '../../userobj';
+import { Groupobj } from '../../groupobj';
+import { Channelobj } from '../../channel';
+import { Chatobj } from '../../chat';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -60,6 +60,6 @@ export class GroupassisComponent implements OnInit {
   opengroup(Group: Groupobj) {
     localStorage.clear;
     localStorage.setItem('Group', JSON.stringify(Group));
-    this.router.navigateByUrl('/groupview');
+    this.router.navigateByUrl('/usergroupview');
   }
 }

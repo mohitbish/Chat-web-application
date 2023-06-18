@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Channelobj } from '../channel';
-
+import { Channelobj } from 'src/app/channel';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -11,11 +10,11 @@ const BACKEND_URL = 'http://localhost:3000';
 // for angular http methods
 
 @Component({
-  selector: 'app-groupview',
-  templateUrl: './groupview.component.html',
-  styleUrls: ['./groupview.component.css'],
+  selector: 'app-usergroupview',
+  templateUrl: './usergroupview.component.html',
+  styleUrls: ['./usergroupview.component.css'],
 })
-export class GroupviewComponent implements OnInit {
+export class UsergroupviewComponent implements OnInit {
   Groupname = '';
   User = { Username: '', Password: '', Email: '', Role: '' };
   Chat = { Message: '', User: this.User };
@@ -30,14 +29,6 @@ export class GroupviewComponent implements OnInit {
     this.getChannels();
   }
 
-  //updates group to add channel
-  addChannel() {
-    localStorage.removeItem('Group');
-    this.getChannels();
-    localStorage.setItem('Group', JSON.stringify(this.Group));
-    this.router.navigateByUrl('/addchannel');
-  }
-
   //gets channellist from group
   async getChannels() {
     let data = await this.httpClient
@@ -46,28 +37,6 @@ export class GroupviewComponent implements OnInit {
     this.Group = data[0];
     this.Channels = this.Group.Channellist;
     console.log(this.Group);
-  }
-
-  //updates group to remove
-  removechannel(channel: Channelobj) {
-    const Channels = this.Channels.filter(
-      (data) => data.Channelname != channel.Channelname
-    );
-    const NGroup = {
-      Groupname: this.Groupname,
-      Channellist: Channels,
-      userlist: this.Group.userlist,
-    };
-    const Group = { new: NGroup, old: this.Group };
-    this.httpClient
-      .post(BACKEND_URL + '/addchannel', Group, httpOptions)
-      .subscribe((data: any) => {
-        console.log(data.Group.Channellist);
-        if (data.ok) {
-          alert('removed');
-          this.getChannels();
-        }
-      });
   }
 
   //redirects to channel

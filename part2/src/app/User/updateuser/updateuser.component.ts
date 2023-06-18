@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {Router} from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Userobj } from '../userobj';
+import { Userobj } from '../../userobj';
 
 
 const httpOptions = {
