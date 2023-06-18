@@ -29,6 +29,7 @@ const routes: Routes = [{path:'login', component:LoginComponent},
                         {path: 'addchannel', component: AddchannelComponent},
                         {path: 'channelview', component: ChannelviewComponent},
                         {path:'addusertochannel', component: AddusertochannelComponent}
+                        
 
                       ];
 

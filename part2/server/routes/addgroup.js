@@ -26,7 +26,6 @@ module.exports = function(req,res) {
         if (err) throw err;
         res.send({"ok":true, "group":Group});
         console.log("Group Added");
-        
     });
     
 }

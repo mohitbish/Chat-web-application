@@ -1,6 +1,7 @@
 <p>superadmin works!</p>
 <li><a class="nav-link" routerLink="/adduser">addUser</a></li>
 <li><a class="nav-link" routerLink="/users">Users</a></li>
+<li><a class="nav-link" routerLink="/addgroup">addgroup</a></li>
 
 
 
@@ -14,6 +15,7 @@
         <tr *ngFor="let Group of Groups">
             <td> {{Group.Groupname}}</td>
             <td> <button (click) = "opengroup(Group)"class= "btn btn-danger">open</button></td>
+            <td> <button (click) = "removegroup(Group)"class= "btn btn-danger">delete</button></td>
         </tr>
     </tbody>
 </table>

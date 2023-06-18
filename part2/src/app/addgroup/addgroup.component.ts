@@ -41,7 +41,7 @@ export class AddgroupComponent implements OnInit {
         console.log(data);
         if(data.ok){
           alert("added");
-          this.router.navigateByUrl("/groupadmin");
+          this.router.navigateByUrl("/superadmin");
         }
         
       })
