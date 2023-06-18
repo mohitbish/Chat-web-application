@@ -44,20 +44,13 @@ export class GroupviewComponent implements OnInit {
 
   //gets channellist from group
   async getChannels() {
-    const Group = this.Group;
+    const Group = JSON.parse(localStorage.getItem('Group')!);
     let data = await this.httpClient
       .post(BACKEND_URL + '/getchannels', Group, httpOptions)
       .toPromise();
 
-    let Channels = data[0].Channellist;
-    console.log(Channels);
-    Channels.map((e) => {
-      if (e.Channelname == "") {
-          Channels.pop(e);
-      }
-    });
-    this.Channels = Channels
-    console.log(this.Channels)
+    this.Channels = data[0].Channellist;
+    
   }
 
   //updates group to remove

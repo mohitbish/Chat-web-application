@@ -25,7 +25,7 @@ export class AddchannelComponent implements OnInit {
   Channel = {Channelname:"", Userlist : [], chatList:[]}
   Channels: Channelobj[] = []
   userlist: Userobj[] = []
-  Group = {Groupname: this.Groupname, Channellist: [], userlist:[] };
+  Group = {Groupname: this.Groupname, Channellist: this.Channels, userlist:[] };
   constructor(private router:Router, private httpClient: HttpClient) { }
 
   ngOnInit(): void {
