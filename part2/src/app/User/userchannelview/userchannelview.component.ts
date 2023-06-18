@@ -127,9 +127,8 @@ export class UserchannelviewComponent implements OnInit {
             this.get1group(data.Group);
           }
         });
-    }
-    else{
-      alert("only the sender or admin can delete other messages")
+    } else {
+      alert('only the sender or admin can delete other messages');
     }
   }
 }
