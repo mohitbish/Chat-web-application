@@ -21,6 +21,7 @@ import { AddchannelComponent } from './addchannel/addchannel.component';
 import { ChannelviewComponent } from './channelview/channelview.component';
 import { AddusertochannelComponent } from './addusertochannel/addusertochannel.component';
 import { UsergroupviewComponent } from './User/usergroupview/usergroupview.component';
+import { UserchannelviewComponent } from './User/userchannelview/userchannelview.component';
 
 
 
@@ -41,7 +42,8 @@ import { UsergroupviewComponent } from './User/usergroupview/usergroupview.compo
     AddchannelComponent,
     ChannelviewComponent,
     AddusertochannelComponent,
-    UsergroupviewComponent
+    UsergroupviewComponent,
+    UserchannelviewComponent
     
   ],
   imports: [

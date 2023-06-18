@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Userobj } from '../../userobj';
 import { Groupobj } from '../../groupobj';
-import { Channelobj } from '../../channel';
-import { Chatobj } from '../../chat';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -41,15 +38,14 @@ export class GroupassisComponent implements OnInit {
     this.AllGroups = data;
     console.log(this.AllGroups);
 
-    let available_Groups = []
+    let available_Groups = [];
     this.AllGroups.forEach((g) => {
       console.log(typeof g.userlist);
 
-       g.userlist.forEach(function (arrayItem) {
+      g.userlist.forEach(function (arrayItem) {
         var x = arrayItem;
         if (x.Username == sessionStorage.getItem('Username')) {
-          console.log('yup');
-          available_Groups.push(g)
+          available_Groups.push(g);
         }
       });
 

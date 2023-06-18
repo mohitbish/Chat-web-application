@@ -43,6 +43,6 @@ export class UsergroupviewComponent implements OnInit {
   openchannel(Channel: Channelobj) {
     localStorage.clear;
     localStorage.setItem('channel', JSON.stringify(Channel));
-    this.router.navigateByUrl('/channelview');
+    this.router.navigateByUrl('/userchannelview');
   }
 }

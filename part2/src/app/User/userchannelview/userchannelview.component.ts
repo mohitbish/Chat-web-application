@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Userobj } from '../userobj';
-import { Groupobj } from '../groupobj';
-import { Channelobj } from '../channel';
-import { Chatobj } from '../chat';
+import { Userobj } from 'src/app/userobj';
+import { Groupobj } from 'src/app/groupobj';
+import { Channelobj } from 'src/app/channel';
+import { Chatobj } from 'src/app/chat';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -13,11 +13,11 @@ const BACKEND_URL = 'http://localhost:3000';
 // for angular http methods
 
 @Component({
-  selector: 'app-channelview',
-  templateUrl: './channelview.component.html',
-  styleUrls: ['./channelview.component.css'],
+  selector: 'app-userchannelview',
+  templateUrl: './userchannelview.component.html',
+  styleUrls: ['./userchannelview.component.css'],
 })
-export class ChannelviewComponent implements OnInit {
+export class UserchannelviewComponent implements OnInit {
   Groupname = '';
   channelname = '';
   Message = '';
@@ -36,6 +36,7 @@ export class ChannelviewComponent implements OnInit {
   ngOnInit(): void {
     this.get1group(JSON.parse(localStorage.getItem('Group')!));
     this.Channel = JSON.parse(localStorage.getItem('channel')!);
+    this.User = JSON.parse(localStorage.getItem('user')!);
     this.Channels = this.Group.Channellist;
     this.channelname = this.Channel.Channelname;
     this.chatlist = this.Channel.chatList;
@@ -44,27 +45,6 @@ export class ChannelviewComponent implements OnInit {
     console.log(this.Groupname);
     console.log(JSON.parse(localStorage.getItem('Group')!));
     console.log(JSON.parse(localStorage.getItem('channel')!));
-  }
-
-  //remove user from channel
-  removefromchannel(guser: Userobj) {
-    const Gusers = this.Gusers.filter(
-      (data) => data.Username != guser.Username
-    );
-    const NGroup = {
-      Groupname: this.Group.Groupname,
-      Channellist: this.Group.Channellist,
-      userlist: Gusers,
-    };
-    const Group = { new: NGroup, old: this.Group };
-    this.httpClient
-      .post(BACKEND_URL + '/addchannel', Group, httpOptions)
-      .subscribe((data: any) => {
-        if (data.ok) {
-          alert('removed');
-          this.get1group(data.Group);
-        }
-      });
   }
 
   //gets groups
@@ -82,12 +62,6 @@ export class ChannelviewComponent implements OnInit {
         const channel = channels[0];
         this.chatlist = channel.chatList;
       });
-  }
-  //add users
-  adduser() {
-    localStorage.removeItem('Group');
-    localStorage.setItem('Group', JSON.stringify(this.Group));
-    this.router.navigateByUrl('/addusertochannel');
   }
 
   //posts message and updates group
@@ -127,30 +101,35 @@ export class ChannelviewComponent implements OnInit {
 
   //upadte group to remove message
   removemessage(chat: Chatobj) {
-    const chatlist = this.chatlist.filter(
-      (data) => data.Message != chat.Message
-    );
-    const channel: Channelobj = {
-      Channelname: this.channelname,
-      Userlist: [],
-      chatList: chatlist,
-    };
-    const channels = this.Channels.filter(
-      (data) => data.Channelname != this.channelname
-    );
-    channels.push(channel);
-    const NGroup = {
-      Groupname: this.Groupname,
-      Channellist: channels,
-      userlist: this.Gusers,
-    };
-    const Group = { new: NGroup, old: this.Group };
-    this.httpClient
-      .post(BACKEND_URL + '/addchannel', Group, httpOptions)
-      .subscribe((data: any) => {
-        if (data.ok) {
-          this.get1group(data.Group);
-        }
-      });
+    if (chat.User.Username == this.User.Username) {
+      const chatlist = this.chatlist.filter(
+        (data) => data.Message != chat.Message
+      );
+      const channel: Channelobj = {
+        Channelname: this.channelname,
+        Userlist: [],
+        chatList: chatlist,
+      };
+      const channels = this.Channels.filter(
+        (data) => data.Channelname != this.channelname
+      );
+      channels.push(channel);
+      const NGroup = {
+        Groupname: this.Groupname,
+        Channellist: channels,
+        userlist: this.Gusers,
+      };
+      const Group = { new: NGroup, old: this.Group };
+      this.httpClient
+        .post(BACKEND_URL + '/addchannel', Group, httpOptions)
+        .subscribe((data: any) => {
+          if (data.ok) {
+            this.get1group(data.Group);
+          }
+        });
+    }
+    else{
+      alert("only the sender or admin can delete other messages")
+    }
   }
 }

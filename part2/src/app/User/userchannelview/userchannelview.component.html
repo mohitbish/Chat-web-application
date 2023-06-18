@@ -1,0 +1,41 @@
+
+
+<table class ="table table-hover">
+    <thead>
+        <tr>
+            <td>Username</td>
+            <td>Email</td>
+            <td>Role</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Guser of Gusers">
+            <td> {{Guser.Username}}</td>
+            <td> {{Guser.Email}}</td>
+            <td> {{Guser.Role}}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<label for="Message">Message</label>
+<br>
+<input type="text"  name="Message" [(ngModel)]="Message" >
+<br>
+<button class="submit" (click) = "post()">Send</button>
+
+<table class ="table table-hover">
+    <thead>
+        <tr>
+            <td>Message</td>
+            <td>Sender</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let chat of chatlist">
+            <td> {{chat.Message}}</td>
+            <td> {{chat.User.Username}}</td>
+            <td> <button (click) = "removemessage(chat)"class= "btn btn-danger">Remove</button></td>
+        </tr>
+    </tbody>
+</table>
