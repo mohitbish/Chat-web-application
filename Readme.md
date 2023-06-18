@@ -135,7 +135,6 @@ Components
     superadmin => shows router links to adduser and userlist
     Users => shows the list of all the users. Controls the function to remove a user
     updateuser => shows the form  with old values, send request to upadte to new values.
-    groupadmin => shows the list of gropus and link to add groups
     addgroup => shows form to add new group and send request to server
     addchannel => shows form to add channel and send request to update group
     addusertochannel => shows list of all userr and send request add user to channel
