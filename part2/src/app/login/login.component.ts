@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
             sessionStorage.setItem('Role', data.user.Role);
             sessionStorage.setItem('_id', data.user._id);
             localStorage.setItem('user', JSON.stringify(data.user));
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/profile');
           } else {
             alert('Username or Password incorrect');
           }
