@@ -18,7 +18,7 @@ body {
   overflow: hidden;
   align-items: center;
   padding: 0;
-  margin :0;
+  margin: 0;
 }
 
 .navbar {
@@ -68,6 +68,4 @@ body {
     border-radius: 0.4rem;
     border-color: aliceblue;
   }
-  
-  
 }
