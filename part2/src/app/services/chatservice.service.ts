@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { io, Socket } from 'socket.io-client';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { io } from "socket.io-client";
 import { Chatobj } from '../chat';
 import { Userobj } from '../userobj';
 
@@ -10,27 +10,23 @@ import { Userobj } from '../userobj';
 })
 export class ChatService {
 
-  private socket: Socket;
-  url = 'http://localhost:3000';
- 
-  constructor() {
-    this.socket= io("ws://localhost:3000")
+  public message$: BehaviorSubject<string> = new BehaviorSubject('');
+  constructor() {}
+
+  socket = io('http://localhost:3000');
+
+  public sendMessage(message: any) {
+    console.log('sendMessage: ', message)
+    this.socket.emit('message', message);
   }
 
-  initsocket(){
-    this.socket= io("ws://localhost:3000")
-    return ()=>{this.socket.disconnect();}
-  }
+  public getNewMessage = () => {
+    this.socket.on('message', (message) =>{
+      this.message$.next(message);
+    });
 
-  send(Message: string): void {
-    this.socket.emit('message', Message);
-  }
-
-  getMessage(): Observable<any> {
-    return new Observable(observer=>{
-      this.socket.on('message', (data)=>{observer.next(data)})
-    })
-  }
+    return this.message$.asObservable();
+  };
 
   
 

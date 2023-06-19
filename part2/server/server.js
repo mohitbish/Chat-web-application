@@ -1,5 +1,5 @@
 const express = require("express"),
-http = require("http");
+  http = require("http");
 var app = express();
 
 (fs = require("fs")), (PORT = 3000), (PORT2 = 8888);
@@ -30,6 +30,7 @@ app.use(function (req, res, next) {
 const bodyParser = require("body-parser");
 const { METHODS } = require("http");
 const { Socket } = require("socket.io");
+
 app.use(
   bodyParser.urlencoded({
     extended: true,
@@ -41,6 +42,23 @@ const httpServer = http.Server(app);
 
 const https = require("https"),
   httpsServer = https.createServer(app);
+
+const io = require("socket.io")(httpServer, {
+  cors: { origin: "*" },
+});
+
+io.on("connection", (socket) => {
+  console.log("a user connected");
+
+  socket.on("message", (message) => {
+    console.log(message);
+    io.emit("message", `${socket.id.substr(0, 2)}: ${message}`);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("a user disconnected!");
+  });
+});
 
 httpServer.listen(PORT, function () {
   console.log(`http Server listening on port: ${PORT}`);
@@ -63,4 +81,3 @@ app.post("/addchannel", require("./routes/addchannel"));
 app.post("/getchannels", require("./routes/getchannels"));
 app.post("/get1group", require("./routes/get1group"));
 module.exports = app;
-

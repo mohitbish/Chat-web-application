@@ -6,6 +6,7 @@ npm install --save-dev mocha
 
 ANGULAR SETUP 
     npm install bootstrap@3
+    npm i socket.io-client
     ng new part2
     npm install bootstrap --save
     ng generate component login
@@ -31,7 +32,7 @@ SERVER SETUP
     npm install body-parser --save
     npm install cors --save
     npm install mangodb
-    npm install socket.io
+    npm i express socket.io
 
 
 GIT DOCUMENTATION
