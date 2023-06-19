@@ -6,16 +6,12 @@ const httpOptions = {
 // const BACKEND_URL = 'http://localhost:3000';
 const BACKEND_URL = 'https://localhost:3000';
 
-// for angular http methods
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-
-import { Userobj } from '../userobj';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
   constructor(private router: Router, private httpClient: HttpClient) {
@@ -40,5 +36,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 }

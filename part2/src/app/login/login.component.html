@@ -1,9 +1,14 @@
-<h1>Login</h1>
-<br>
-<label for="Username">Username</label>
-<input type="text"  name="Username" [(ngModel)]="Username"  >
-<br>
-<label for="Password">Password</label>
-<input type="password"  name="Password" [(ngModel)]="Password"  >
-<br>
-<button class="submit" (click) = "check()">Login</button>
+
+<div class="formconatiner">
+    <h1>Login</h1>
+<form class="form">
+  <br />
+  <label  class="label" for="Username">Username</label>
+  <input class="input" type="text" name="Username" [(ngModel)]="Username" />
+  <br />
+  <label  class="label" for="Password">Password</label>
+  <input class="input" type="password" name="Password" [(ngModel)]="Password" />
+  <br />
+  <button class="submit" (click)="check()">Login</button>
+</form>
+</div>
