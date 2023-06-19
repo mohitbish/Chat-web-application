@@ -1,26 +1,29 @@
-<p>
-  <button (click)="addChannel()" class="btn btn-danger">Add Channel</button>
-</p>
-<br />
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <td>GroupName: {{ Groupname }}</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let Channel of Channels">
-      <td>{{ Channel.Channelname }}</td>
-      <td>
-        <button (click)="openchannel(Channel)" class="btn btn-danger">
-          open
-        </button>
-      </td>
-      <td>
-        <button (click)="removechannel(Channel)" class="btn btn-danger">
-          Delete
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<div class="groupview">
+  <div class="btn">
+    <button (click)="addChannel()" class="btn btn-danger">Add New Channel</button>
+  </div>
+  <div>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <td>GroupName: {{ Groupname }}</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Channel of Channels">
+          <td>{{ Channel.Channelname }}</td>
+          <td>
+            <button (click)="openchannel(Channel)" class="btn btn-danger">
+              open
+            </button>
+          </td>
+          <td>
+            <button (click)="removechannel(Channel)" class="btn btn-danger">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

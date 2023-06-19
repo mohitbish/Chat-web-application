@@ -1,18 +1,22 @@
-<h1>Add user</h1>
-<label for="Username">Username</label>
-<br>
-<input type="text"  name="Username" [(ngModel)]="Username" >
-<br>
-<label for="password">password</label>
-<br>
-<input type="password"  name="password" [(ngModel)]="Password" >
-<br>
-<label for="Email">Email</label>
-<br>
-<input type="email"  name="Email" [(ngModel)]="Email" >
-<br>
-<label for="Role">Role</label>
-<br>
-<input type="text"  name="Role" [(ngModel)]="Role" >
-<br>
-<button class="submit" (click) = "adduser()">Add</button>
+<div class="formconatiner">
+    <h1>Add user</h1>
+  <div class="add-form">
+    <label for="Username">Username</label>
+    <br />
+    <input type="text" name="Username" [(ngModel)]="Username" />
+    <br />
+    <label for="password">password</label>
+    <br />
+    <input type="password" name="password" [(ngModel)]="Password" />
+    <br />
+    <label for="Email">Email</label>
+    <br />
+    <input type="email" name="Email" [(ngModel)]="Email" />
+    <br />
+    <label for="Role">Role</label>
+    <br />
+    <input type="text" name="Role" [(ngModel)]="Role" />
+    <br />
+    <button class="submit" (click)="adduser()">Add</button>
+  </div>
+</div>

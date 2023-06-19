@@ -1,0 +1,31 @@
+.groupview {
+  height: 85vh;
+  width: 100%;
+  background-color: #d4282876;
+  align-items: top;
+  justify-content: space-around;
+  display: grid;
+  grid-template-rows: 10% 90% ;
+  @media screen and (min-width: 720px) and (max-width: 1080px) {
+    grid-template-columns: 35% 65%;
+  }
+}
+.btn{
+    display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  justify-content: space-around;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+th { 
+	background: #ffffff; 
+	color: rgb(0, 0, 0); 
+	font-weight: bold; 
+    margin-top: 2rem;
+}
+tr{
+    background: #a14444;
+    margin:2rem;
+}
