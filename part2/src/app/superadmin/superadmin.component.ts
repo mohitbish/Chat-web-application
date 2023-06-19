@@ -19,6 +19,7 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 export class SuperadminComponent implements OnInit {
   Groups: Groupobj[] = [];
+  Username: string ;
   constructor(private router: Router, private httpClient: HttpClient) {}
 
   ngOnInit(): void {
@@ -30,6 +31,7 @@ export class SuperadminComponent implements OnInit {
       .get<Groupobj[]>(BACKEND_URL + '/getgroups')
       .subscribe((data: any) => {
         this.Groups = data;
+        this.Username = sessionStorage.getItem('Username')
         console.log(typeof data, data);
       });
   }

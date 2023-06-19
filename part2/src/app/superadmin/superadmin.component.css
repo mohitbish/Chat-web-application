@@ -1,0 +1,40 @@
+.Mcontainer {
+  height: 85vh;
+  width: 100%;
+  background-color: #d4282876;
+  align-items: center;
+  justify-content: space-around;
+  display: grid;
+  grid-template-rows: 10% 10% 80%;
+  @media screen and (min-width: 720px) and (max-width: 1080px) {
+    grid-template-columns: 35% 65%;
+  }
+}
+.h1 {
+    color:black
+}
+.options {
+  display: flex;
+  flex-direction: rows;
+  overflow: hidden;
+  justify-content: space-around;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  
+}
+.options a {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+  border: 0.5px solid;
+  border-radius: 0.5px;
+  gap: 1rem;
+  align-items: center;
+  transition: 0.5s ease-in-out;
+  font-size: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-color: aliceblue;
+}

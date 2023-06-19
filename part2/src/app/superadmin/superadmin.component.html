@@ -1,22 +1,41 @@
-<p>superadmin works!</p>
-<li><a class="nav-link" routerLink="/adduser">addUser</a></li>
-<li><a class="nav-link" routerLink="/users">Users</a></li>
-<li><a class="nav-link" routerLink="/addgroup">addgroup</a></li>
 
+<div class="Mcontainer">
+    <div class="h1">
+    <h1>
+        Welcome
+        <ng-container *ngIf="Username as Username">
+          {{ Username }}
+        </ng-container>
+      </h1>
+    </div>
+  <div class="options">
+    <div><a class="nav-link" routerLink="/adduser">Add User</a></div>
+    <div><a class="nav-link" routerLink="/users">Users List</a></div>
+    <div><a class="nav-link" routerLink="/addgroup">Add Group</a></div>
+  </div>
 
-
-<table class ="table table-hover">
-    <thead>
+  <div class="Groups">
+    <table class="table table-hover">
+      <thead>
         <tr>
-            <td>GroupName</td>
+          <td>GroupName</td>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
         <tr *ngFor="let Group of Groups">
-            <td> {{Group.Groupname}}</td>
-            <td> <button (click) = "opengroup(Group)"class= "btn btn-danger">open</button></td>
-            <td> <button (click) = "removegroup(Group)"class= "btn btn-danger">delete</button></td>
+          <td>{{ Group.Groupname }}</td>
+          <td>
+            <button (click)="opengroup(Group)" class="btn btn-danger">
+              open
+            </button>
+          </td>
+          <td>
+            <button (click)="removegroup(Group)" class="btn btn-danger">
+              delete
+            </button>
+          </td>
         </tr>
-    </tbody>
-</table>
-
+      </tbody>
+    </table>
+  </div>
+</div>
