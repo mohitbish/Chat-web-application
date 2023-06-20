@@ -24,6 +24,7 @@ export class SuperadminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGroups();
+    this.Username = sessionStorage.getItem('Username')
   }
 
   getGroups() {
@@ -31,7 +32,7 @@ export class SuperadminComponent implements OnInit {
       .get<Groupobj[]>(BACKEND_URL + '/getgroups')
       .subscribe((data: any) => {
         this.Groups = data;
-        this.Username = sessionStorage.getItem('Username')
+        
         console.log(typeof data, data);
       });
   }

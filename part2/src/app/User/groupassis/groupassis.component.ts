@@ -16,6 +16,7 @@ const BACKEND_URL = 'http://localhost:3000';
 })
 export class GroupassisComponent implements OnInit {
   Groups: Groupobj[] = [];
+  Username: string ;
   AllGroups: Groupobj[] = [];
   User = { _id: '', Username: '', Password: '', Email: '', Role: '' };
 
@@ -29,6 +30,7 @@ export class GroupassisComponent implements OnInit {
 
   ngOnInit(): void {
     this.getGroups();
+    this.Username = sessionStorage.getItem('Username')
   }
 
   async getGroups() {
@@ -36,6 +38,7 @@ export class GroupassisComponent implements OnInit {
       .get<Groupobj[]>(BACKEND_URL + '/getgroups')
       .toPromise();
     this.AllGroups = data;
+    
     console.log(this.AllGroups);
 
     let available_Groups = [];
