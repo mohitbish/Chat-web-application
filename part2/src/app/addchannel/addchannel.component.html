@@ -1,6 +1,11 @@
-<h1>Add Channel</h1>
-<label for="Channelname">Channelname</label>
-<br>
-<input type="text"  name="Channelname" [(ngModel)]="Channelname" >
-<br>
-<button class="submit" (click) = "addChannel()">Add</button>
+<div class="formconatiner">
+    <h1>Add Channel</h1>
+    <div class="form">
+        <label for="Channelname">Channelname</label>
+        <br>
+        <input type="text" name="Channelname" [(ngModel)]="Channelname" >
+        <br>
+        <button class="submit" (click) = "addChannel()">Add</button>
+    </div>
+
+</div>

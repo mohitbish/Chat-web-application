@@ -1,19 +1,29 @@
-<p>users works!</p>
-<table class ="table table-hover">
+<div class="table">
+    <h1>USER LIST</h1>
+  <table class="table table-hover">
     <thead>
-        <tr>
-            <td>Username</td>
-            <td>Email</td>
-            <td>Role</td>
-        </tr>
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let user of users">
-            <td> {{user.Username}}</td>
-            <td> {{user.Email}}</td>
-            <td> {{user.Role}}</td>
-            <td> <button (click) = "removeuser(user)"class= "btn btn-danger">Delete</button></td>
-            <td> <button (click) = "updateuser(user)"class= "btn btn-danger">Update</button></td>
-        </tr>
+      <tr *ngFor="let user of users">
+        <td>{{ user.Username }}</td>
+        <td>{{ user.Email }}</td>
+        <td>{{ user.Role }}</td>
+        <td>
+          <button (click)="removeuser(user)" class="btn btn-danger">
+            Delete
+          </button>
+        </td>
+        <td>
+          <button (click)="updateuser(user)" class="btn btn-danger">
+            Update
+          </button>
+        </td>
+      </tr>
     </tbody>
-</table>
+  </table>
+</div>

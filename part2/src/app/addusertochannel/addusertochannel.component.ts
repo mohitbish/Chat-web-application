@@ -32,6 +32,7 @@ export class AddusertochannelComponent implements OnInit {
   ngOnInit(): void {
     this.Group = JSON.parse(localStorage.getItem('Group')!);
     this.Gusers = this.Group.userlist
+    this.Groupname = this.Group.Groupname
     this.getusers()
   }
   getusers(){

@@ -1,0 +1,14 @@
+th { 
+	background: #ffffff; 
+	color: rgb(0, 0, 0); 
+	font-weight: bold; 
+    margin-top: 2rem;
+    background: #a14444;
+}
+tr{
+    margin:2rem;
+    background: #fba9a9;
+}
+.table{
+    gap: 1rem;
+}
