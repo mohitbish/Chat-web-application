@@ -43,23 +43,6 @@ const httpServer = http.Server(app);
 const https = require("https"),
   httpsServer = https.createServer(app);
 
-const io = require("socket.io")(httpServer, {
-  cors: { origin: "*" },
-});
-
-io.on("connection", (socket) => {
-  console.log("a user connected");
-
-  socket.on("message", (message) => {
-    console.log(message);
-    io.emit("message", `${socket.id.substr(0, 2)}: ${message}`);
-  });
-
-  socket.on("disconnect", () => {
-    console.log("a user disconnected!");
-  });
-});
-
 httpServer.listen(PORT, function () {
   console.log(`http Server listening on port: ${PORT}`);
 });

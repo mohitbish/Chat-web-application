@@ -30,10 +30,14 @@ export class ChannelviewComponent implements OnInit {
   Channels: Channelobj[] = [];
   Gusers: Userobj[] = [];
   chatlist: Chatobj[] = [];
-  messageList: string[] = [];
+
   Group = { Groupname: this.Groupname, Channellist: [], userlist: [] };
 
-  constructor(private router: Router, private httpClient: HttpClient,private chatService: ChatService) {}
+  constructor(
+    private router: Router,
+    private httpClient: HttpClient,
+    private chatService: ChatService
+  ) {}
 
   ngOnInit(): void {
     this.get1group(JSON.parse(localStorage.getItem('Group')!));
@@ -47,9 +51,6 @@ export class ChannelviewComponent implements OnInit {
     console.log(JSON.parse(localStorage.getItem('Group')!));
     console.log(JSON.parse(localStorage.getItem('channel')!));
 
-    this.chatService.getNewMessage().subscribe((message: string) => {
-      this.messageList.push(message);
-    })
   }
 
   //remove user from channel
@@ -127,10 +128,6 @@ export class ChannelviewComponent implements OnInit {
           this.get1group(data.Group);
         }
       });
-    
-    this.chatService.sendMessage(this.Message);
-    this.Message = '';
-
   }
 
   //upadte group to remove message
