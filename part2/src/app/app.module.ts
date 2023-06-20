@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { ChatService } from './services/chatservice.service'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -21,8 +20,6 @@ import { ChannelviewComponent } from './channelview/channelview.component';
 import { AddusertochannelComponent } from './addusertochannel/addusertochannel.component';
 import { UsergroupviewComponent } from './User/usergroupview/usergroupview.component';
 import { UserchannelviewComponent } from './User/userchannelview/userchannelview.component';
-
-
 
 
 @NgModule({
@@ -50,9 +47,10 @@ import { UserchannelviewComponent } from './User/userchannelview/userchannelview
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+
   ],
-  providers: [ChatService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

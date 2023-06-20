@@ -5,7 +5,6 @@ import { Userobj } from '../userobj';
 import { Groupobj } from '../groupobj';
 import { Channelobj } from '../channel';
 import { Chatobj } from '../chat';
-import { ChatService } from '../services/chatservice.service';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -36,7 +35,7 @@ export class ChannelviewComponent implements OnInit {
   constructor(
     private router: Router,
     private httpClient: HttpClient,
-    private chatService: ChatService
+
   ) {}
 
   ngOnInit(): void {

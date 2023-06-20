@@ -1,14 +1,22 @@
-const express = require("express"),
-  http = require("http");
+const express = require("express");
+const bodyParser = require("body-parser");
+const { METHODS } = require("http");
+const { Socket } = require("socket.io");
+const http = require("http");
 var app = express();
+const cors = require("cors");
+
+const httpServer = http.Server(app);
+
+const https = require("https");
+
+const httpsServer = https.createServer(app);
 
 (fs = require("fs")), (PORT = 3000), (PORT2 = 8888);
 
 var server = http.createServer(app);
 
 // Cross origin resource sharing to cater for port 4200 to port 3000
-
-const cors = require("cors");
 
 app.use(cors());
 
@@ -27,21 +35,12 @@ app.use(function (req, res, next) {
   next();
 });
 
-const bodyParser = require("body-parser");
-const { METHODS } = require("http");
-const { Socket } = require("socket.io");
-
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
 app.use(bodyParser.json());
-
-const httpServer = http.Server(app);
-
-const https = require("https"),
-  httpsServer = https.createServer(app);
 
 httpServer.listen(PORT, function () {
   console.log(`http Server listening on port: ${PORT}`);
