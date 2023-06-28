@@ -1,14 +1,33 @@
-
-<div class="@apply h-[90vh] w-screen flex flex-col gap-8 items-center bg-cover bg-center pt-8 justify-top" style="background-image: url('../assets/286.jpg')">
-    <h1 class=" text-4xl font-bold text-[white]">Login</h1>
-<form class="w-[30vw] flex flex-col gap-4 bg-[#00000076] border items-center p-20 rounded-[2rem] border-solid border-[aqua]">
-  <br />
-  <label  class="text-[white] uppercase" for="Username">Username</label>
-  <input class="bg-transparent text-[white] w-full text-base p-4 rounded-[0.4rem] border-[0.1rem] border-solid border-[aliceblue] focus:border-[0.1rem] focus:border-solid focus:border-[#997af0]" type="text" name="Username" [(ngModel)]="Username" />
-  <br />
-  <label  class="text-[white] uppercase" for="Password">Password</label>
-  <input class="bg-transparent text-[white] w-full text-base p-4 rounded-[0.4rem] border-[0.1rem] border-solid border-[aliceblue] focus:border-[0.1rem] focus:border-solid focus:border-[#997af0]" type="password" name="Password" [(ngModel)]="Password" />
-  <br />
-  <button class="bg-[#4e0eff] text-[white] font-[bold] cursor-pointer text-base uppercase px-8 py-4 rounded-[0.4rem] border-[none] hover:bg-[#5a4b85]" (click)="check()">Login</button>
-</form>
+<div
+  class="@apply h-[90vh] w-screen flex flex-col gap-8 items-center bg-cover bg-center pt-8 justify-top"
+  style="background-image: url('../assets/2.jpg')"
+>
+  <h1 class="md:text-4xl sm:text-2xl font-bold text-[black]">Login</h1>
+  <form
+    class="md:w-[40vw] sm:w-[50vw] flex flex-col gap-4 bg-[#00000076] border items-center p-20 rounded-[2rem] border-solid border-[black]"
+  >
+    <br />
+    <label class="text-[black] uppercase" for="Username">Username</label>
+    <input
+      class="bg-transparent text-[black] w-full text-base p-4 rounded-[0.4rem] border-[0.1rem] border-solid border-[aliceblue] focus:border-[0.1rem] focus:border-solid focus:border-[#997af0]"
+      type="text"
+      name="Username"
+      [(ngModel)]="Username"
+    />
+    <br />
+    <label class="text-[black] uppercase" for="Password">Password</label>
+    <input
+      class="bg-transparent text-[black] w-full text-base p-4 rounded-[0.4rem] border-[0.1rem] border-solid border-[aliceblue] focus:border-[0.1rem] focus:border-solid focus:border-[#997af0]"
+      type="password"
+      name="Password"
+      [(ngModel)]="Password"
+    />
+    <br />
+    <button
+      class="bg-[black] text-[white] font-[bold] cursor-pointer text-base uppercase px-8 py-4 rounded-[0.4rem] border-[none] hover:bg-[#5a4b85]"
+      (click)="check()"
+    >
+      Login
+    </button>
+  </form>
 </div>
