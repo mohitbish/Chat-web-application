@@ -11,8 +11,7 @@ const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  templateUrl: './login.component.html'
 })
 export class LoginComponent implements OnInit {
   Username = '';

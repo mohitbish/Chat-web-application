@@ -6,14 +6,21 @@
     <title>CHAT-APP</title>
   </head>
   <body>
-    <div class="navbar">
-      <div class="links">
-        <div class="active"><a class="nav-link" routerLink="/">Home</a></div>
-        <div><a class="nav-link" routerLink="/profile">profile</a></div>
-        <div><a class="nav-link" routerLink="/login">login</a></div>
-        <div><a class="nav-link" routerLink="/logout">logout</a></div>
+    <div class=" h-[10vh] navbar flex flex-row items-center justify-around text-2xl bg-purple-600 text-white  py-4">
+      <div class="nav-item  font-semibold">
+        <a routerLink="/profile" class="nav-link">PROFILE</a>
+      </div>
+      <div class="nav-item font-semibold">
+        <a routerLink="/login" class="nav-link">LOGIN</a>
+      </div>
+      <div class="nav-item font-semibold">
+        <a routerLink="/logout" class="nav-link">LOGOUT</a>
       </div>
     </div>
-    <div class="container"><router-outlet></router-outlet></div>
+    <div class=" h-[90vh] bg-cover bg-center" style="background-image: url('../assets/286.jpg')">
+      <router-outlet></router-outlet>
+    </div>
+    
+    
   </body>
 </html>
