@@ -14,8 +14,7 @@ const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-channelview',
-  templateUrl: './channelview.component.html',
-  styleUrls: ['./channelview.component.css'],
+  templateUrl: './channelview.component.html'
 })
 export class ChannelviewComponent implements OnInit {
   Groupname = '';

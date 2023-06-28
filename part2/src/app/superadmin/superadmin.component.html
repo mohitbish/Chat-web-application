@@ -2,45 +2,57 @@
   class="h-[90vh] w-full flex flex-col justify-top items-center my-auto bg-cover bg-center bg-opacity-0"
   style="background-image: url('../assets/2.jpg')"
 >
-  <h1 class="md:text-6xl sm:text-2xl my-10  font-bold text-[black]">
+  <h1 class="md:text-6xl sm:text-2xl my-10 font-bold text-[black]">
     Welcome
     <ng-container *ngIf="Username as Username">
       {{ Username }}
     </ng-container>
   </h1>
 
-  <div
-    class="flex flex-row w-full items-center justify-around mx-[10vw] text-black underline  font-semibold uppercase py-2 md:py-4"
-  >
-    <a
-      routerLink="/adduser"
-      class="hover:text-purple-900 transition-colors duration-300 ease-in-out"
-    >
-      adduser
-    </a>
-    <a
-      routerLink="/users"
-      class="hover:text-purple-900 transition-colors duration-300 ease-in-out"
-    >
-      userslist
-    </a>
-    <a
-      routerLink="/addgroup"
-      class="hover:text-purple-900 transition-colors duration-300 ease-in-out"
-    >
-      addgroup
-    </a>
-  </div>
+  <div>
+    <h2 class="md:text-3xl sm:text-xl my-3 font-bold text-[black]">
+      ADMIN TASKS
+    </h2>
+    <table class="my-10 w-[50vw]  items-center">
+      <tbody class="font-semibold underline" >
+        <tr >
+          <a
+            routerLink="/adduser"
+            class="hover:text-purple-900 transition-colors duration-300 ease-in-out"
+          >
+            ADD-USER
+          </a>
+        </tr>
+        <tr >
+          <a
+            routerLink="/users"
+            class="hover:text-purple-900 transition-colors duration-300 ease-in-out"
+          >
+            OPEN-USERLIST
+          </a>
+        </tr>
+        <tr >
+          <a
+            routerLink="/addgroup"
+            class="hover:text-purple-900 transition-colors duration-300 ease-in-out"
+          >
+            ADD-NEW-GROUP
+          </a>
+        </tr>
+      </tbody>
+    </table>
 
-  
+    <h2 class="md:text-3xl sm:text-xl my-3 font-bold text-[black]">
+      GROUPLIST
+    </h2>
     <table class="my-10 w-[50vw] border-2 border-black items-center">
       <thead>
         <tr>
-          <th class=" text-black  font-semibold uppercase">GroupName</th>
+          <th class="text-black font-semibold uppercase">GroupName</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="border-2 border-black "    *ngFor="let Group of Groups">
+        <tr class="border-2 border-black" *ngFor="let Group of Groups">
           <td>{{ Group.Groupname }}</td>
           <td>
             <button (click)="opengroup(Group)" class="hover:text-purple-400">
@@ -55,4 +67,5 @@
         </tr>
       </tbody>
     </table>
+  </div>
 </div>

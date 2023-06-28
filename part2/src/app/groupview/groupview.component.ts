@@ -12,8 +12,7 @@ const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-groupview',
-  templateUrl: './groupview.component.html',
-  styleUrls: ['./groupview.component.css'],
+  templateUrl: './groupview.component.html'
 })
 export class GroupviewComponent implements OnInit {
   Groupname = '';
