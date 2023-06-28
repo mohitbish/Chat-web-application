@@ -1,31 +1,32 @@
-<div class="userlist">
-  <h1>Add to Group:
+<div
+  class="w-screen flex flex-col items-center bg-cover bg-center justify-top"
+  style="background-image: url('../assets/2.jpg')"
+>
+  <h1 class="md:text-4xl sm:text-2xl mt-5 font-bold text-[black]">
     <ng-container *ngIf="Groupname as Groupname">
-        {{ Groupname }}
+        ADD TO GROUP: {{ Groupname }}
       </ng-container>
   </h1>
-
-  <div>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Role</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let user of users">
-          <td>{{ user.Username }}</td>
-          <td>{{ user.Email }}</td>
-          <td>{{ user.Role }}</td>
-          <td>
-            <button (click)="addtochannle(user)" class="btn btn-danger">
-              Add to Channel
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <table class="my-3 w-[50vw] border-2 border-black items-center">
+    <thead>
+      <tr class="text-black font-semibold uppercase">
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  class="border-2 border-black" *ngFor="let user of users">
+        <td>{{ user.Username }}</td>
+        <td>{{ user.Email }}</td>
+        <td>{{ user.Role }}</td>
+        <td>
+          <button (click)="addtochannel(user)" class="text-xs underline hover:text-purple-400">
+            ADD
+          </button>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
 </div>

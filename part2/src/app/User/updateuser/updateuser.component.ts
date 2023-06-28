@@ -11,8 +11,7 @@ const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-updateuser',
-  templateUrl: './updateuser.component.html',
-  styleUrls: ['./updateuser.component.css'],
+  templateUrl: './updateuser.component.html'
 })
 export class UpdateuserComponent implements OnInit {
   Username: String = '';

@@ -16,8 +16,7 @@ const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-addgroup',
-  templateUrl: './addgroup.component.html',
-  styleUrls: ['./addgroup.component.css']
+  templateUrl: './addgroup.component.html'
 })
 export class AddgroupComponent implements OnInit {
 

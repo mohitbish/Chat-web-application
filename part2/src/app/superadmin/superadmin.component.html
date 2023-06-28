@@ -55,12 +55,12 @@
         <tr class="border-2 border-black" *ngFor="let Group of Groups">
           <td>{{ Group.Groupname }}</td>
           <td>
-            <button (click)="opengroup(Group)" class="hover:text-purple-400">
+            <button (click)="opengroup(Group)" class="text-xs underline hover:text-purple-400">
               ENTER
             </button>
           </td>
           <td>
-            <button (click)="removegroup(Group)" class="hover:text-purple-400">
+            <button (click)="removegroup(Group)" class="text-xs underline hover:text-purple-400">
               DELETE
             </button>
           </td>

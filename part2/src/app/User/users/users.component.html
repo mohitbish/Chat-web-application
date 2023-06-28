@@ -1,26 +1,29 @@
-<div class="table">
-    <h1>USER LIST</h1>
-  <table class="table table-hover">
+<div
+  class="w-full flex flex-col justify-top items-center my-auto bg-cover bg-center"
+  style="background-image: url('../assets/2.jpg')"
+>
+  <h1 class="md:text-4xl sm:text-2xl my-3 font-bold text-[black]">USER-LIST</h1>
+  <table class="my-3 w-[50vw] border-2 border-black items-center">
     <thead>
-      <tr>
+      <tr class="text-black font-semibold uppercase">
         <th>Username</th>
         <th>Email</th>
         <th>Role</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
+      <tr  class="border-2 border-black" *ngFor="let user of users">
         <td>{{ user.Username }}</td>
         <td>{{ user.Email }}</td>
         <td>{{ user.Role }}</td>
         <td>
-          <button (click)="removeuser(user)" class="btn btn-danger">
-            Delete
+          <button (click)="removeuser(user)" class="text-xs underline hover:text-purple-400">
+            DELETE
           </button>
         </td>
         <td>
-          <button (click)="updateuser(user)" class="btn btn-danger">
-            Update
+          <button (click)="updateuser(user)" class="text-xs underline hover:text-purple-400">
+            UPDATE
           </button>
         </td>
       </tr>

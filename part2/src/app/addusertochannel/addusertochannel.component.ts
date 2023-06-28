@@ -14,8 +14,7 @@ const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-addusertochannel',
-  templateUrl: './addusertochannel.component.html',
-  styleUrls: ['./addusertochannel.component.css']
+  templateUrl: './addusertochannel.component.html'
 })
 export class AddusertochannelComponent implements OnInit {
 
@@ -44,7 +43,7 @@ export class AddusertochannelComponent implements OnInit {
   }
   
   //updates userlist in channel and updates group
-  addtochannle(user:Userobj ){
+  addtochannel(user:Userobj ){
     this.Gusers.push(user)
     const userlist = this.Gusers
     const NGroup = {Groupname: this.Group.Groupname, Channellist: this.Group.Channellist, userlist: userlist };

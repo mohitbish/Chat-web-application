@@ -14,8 +14,7 @@ const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-addchannel',
-  templateUrl: './addchannel.component.html',
-  styleUrls: ['./addchannel.component.css'],
+  templateUrl: './addchannel.component.html'
 })
 export class AddchannelComponent implements OnInit {
   Groupname = ' ';

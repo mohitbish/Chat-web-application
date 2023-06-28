@@ -126,6 +126,7 @@ export class ChannelviewComponent implements OnInit {
           this.get1group(data.Group);
         }
       });
+      this.Message = ""
   }
 
   //upadte group to remove message
