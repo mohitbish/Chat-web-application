@@ -1,51 +1,55 @@
-<div class="channelview">
-  <div class="users-table">
-    <h1>User-List</h1>
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <td>Username</td>
-          <td>Email</td>
-          <td>Role</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let Guser of Gusers">
-          <td>{{ Guser.Username }}</td>
-          <td>{{ Guser.Email }}</td>
-          <td>{{ Guser.Role }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+<div
+  class="w-full flex flex-col justify-top items-center my-auto bg-cover bg-center"
+  style="background-image: url('../assets/2.jpg')"
+>
+  <h1 class="md:text-4xl sm:text-2xl my-3 font-bold text-[black]">
+    Channelname: {{ channelname }}
+  </h1>
 
-  <div class="Mesasge table">
-    <h1>Messages</h1>
-    <table class="table table-hover">
+  <div>
+    <h2 class="md:text-3xl sm:text-xl my-3 font-bold text-[black]">Messages</h2>
+    <table class="my-3 w-[50vw] border-2 border-black items-center">
       <thead>
-        <tr>
+        <tr class="text-black font-semibold uppercase">
           <td>Message</td>
           <td>Sender</td>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let chat of chatlist">
+        <tr class="border-2 border-black" *ngFor="let chat of chatlist">
           <td>{{ chat.Message }}</td>
           <td>{{ chat.User.Username }}</td>
           <td>
-            <button (click)="removemessage(chat)" class="btn btn-danger">
-              Remove
+            <button
+              (click)="removemessage(chat)"
+              class="text-xs underline hover:text-purple-400"
+            >
+              DELETE
             </button>
           </td>
         </tr>
       </tbody>
     </table>
-  </div>
-  <div class="Msg-form">
-    <label for="Message">Message</label>
-    <br />
-    <input type="text" name="Message" [(ngModel)]="Message" />
-    <br />
-    <button class="submit" (click)="post()">Send</button>
+
+    <div>
+      <label class="text-[black] font-semibold uppercase" for="Message"
+        >Message</label
+      >
+      <br />
+      <input
+        class="bg-transparent text-[black] w-full text-base p-4 rounded-[0.4rem] border-[0.1rem] border-solid border-[black] focus:border-[0.1rem] focus:border-solid focus:border-[aciblue]"
+        type="text"
+        name="Message"
+        placeholder="type here..."
+        [(ngModel)]="Message"
+      />
+      <br />
+      <button
+        class="bg-[black] text-[white] font-[bold] cursor-pointer text-base uppercase px-1 py-1 my-1 rounded-[0.4rem] border-[none] hover:bg-[#5a4b85]"
+        (click)="post()"
+      >
+        Send
+      </button>
+    </div>
   </div>
 </div>

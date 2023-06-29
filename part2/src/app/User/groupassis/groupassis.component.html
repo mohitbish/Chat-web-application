@@ -1,23 +1,37 @@
-<div class="Mcontainer">
-    <h1>
-        Welcome
-        <ng-container *ngIf="Username as Username">
-          {{ Username }}
-        </ng-container>
-      </h1>
-    <table class ="table table-hover">
-        <thead>
-            <tr>
-                <td>GroupName</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let Group of Groups">
-                <td> {{Group.Groupname}}</td>
-                <td> <button (click) = "opengroup(Group)"class= "btn btn-danger">open</button></td>
-            </tr>
-        </tbody>
+<div
+  class="h-[90vh] w-full flex flex-col justify-top items-center my-auto bg-cover bg-center bg-opacity-0"
+  style="background-image: url('../assets/2.jpg')"
+>
+  <h1 class="md:text-6xl sm:text-2xl my-10 font-bold text-[black]">
+    Welcome
+    <ng-container *ngIf="Username as Username">
+      {{ Username }}
+    </ng-container>
+  </h1>
+
+  <div>
+    <h2 class="md:text-3xl sm:text-xl my-3 font-bold text-[black]">
+      GROUPLIST
+    </h2>
+    <table class="my-10 w-[50vw] border-2 border-black items-center">
+      <thead>
+        <tr>
+          <th class="text-black font-semibold uppercase">GroupName</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-2 border-black" *ngFor="let Group of Groups">
+          <td>{{ Group.Groupname }}</td>
+          <td>
+            <button
+              (click)="opengroup(Group)"
+              class="text-xs underline hover:text-purple-400"
+            >
+              ENTER
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
+  </div>
 </div>
-
-

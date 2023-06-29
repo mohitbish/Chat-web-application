@@ -11,8 +11,7 @@ const BACKEND_URL = 'http://localhost:3000';
 
 @Component({
   selector: 'app-groupassis',
-  templateUrl: './groupassis.component.html',
-  styleUrls: ['./groupassis.component.css'],
+  templateUrl: './groupassis.component.html'
 })
 export class GroupassisComponent implements OnInit {
   Groups: Groupobj[] = [];
