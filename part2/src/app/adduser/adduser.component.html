@@ -35,13 +35,11 @@
     <br />
     <label class="text-[black] uppercase" for="Role">Role</label>
     <br />
-    <input
-      class="bg-transparent text-[black] w-full text-base p-2 rounded-[0.4rem] border-[0.1rem] border-solid border-[aliceblue] focus:border-[0.1rem] focus:border-solid focus:border-[#997af0]"
-      type="text"
-      name="Role"
-      [(ngModel)]="Role"
-    />
-    <br />
+    <select [(ngModel)]="Role" class="bg-transparent text-[black] w-full text-base p-2 rounded-[0.4rem] border-[0.1rem] border-solid border-[aliceblue] focus:border-[0.1rem] focus:border-solid focus:border-[#997af0]">
+      <option value="user">User</option>
+      <option value="superadmin">Admin</option>
+    </select>
+    <br/>
     <button
       class="bg-[black] text-[white] font-[bold] cursor-pointer text-base uppercase px-8 py-4 rounded-[0.4rem] border-[none] hover:bg-[#5a4b85]"
       (click)="adduser()"

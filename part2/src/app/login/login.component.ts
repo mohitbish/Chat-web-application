@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         .subscribe((data: any) => {
           if (data.ok) {
             alert('correct');
-            console.log(data.user);
+            console.log(data);
             //checks login credentials in database,
             sessionStorage.setItem('Username', data.user.Username);
             sessionStorage.setItem('Email', data.user.Email);
