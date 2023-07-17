@@ -1,10 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { METHODS } = require("http");
-const { Socket } = require("socket.io");
 const http = require("http");
 var app = express();
 const cors = require("cors");
+require("dotenv").config();
 
 const httpServer = http.Server(app);
 
@@ -42,12 +41,12 @@ app.use(
 );
 app.use(bodyParser.json());
 
-httpServer.listen(PORT, function () {
-  console.log(`http Server listening on port: ${PORT}`);
+httpServer.listen(process.env.PORT, function () {
+  console.log(`http Server listening on port: ${process.env.PORT}`);
 });
 
-httpsServer.listen(PORT2, () => {
-  console.log(`Starting htttps server at: ${PORT2}`);
+httpsServer.listen(process.env.PORT2, () => {
+  console.log(`Starting htttps server at: ${process.env.PORT2}`);
 });
 
 app.post("/adduser", require("./routes/adduser"));
