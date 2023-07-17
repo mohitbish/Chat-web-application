@@ -6,7 +6,7 @@ import { Channelobj } from 'src/app/channel';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
 };
-const BACKEND_URL = 'http://localhost:3000';
+const BACKEND_URL = 'https://group-chat-api.onrender.com';
 // for angular http methods
 
 @Component({
