@@ -22,7 +22,7 @@ app.use(cors());
 //Enable CORS for all HTTP methods
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "https://group-chat-5fx3.onrender.com");
   res.header(
     "Access-Control-Allow-Methods",
     "GET, PUT, POST, post, DELETE, OPTIONS"
