@@ -49,4 +49,29 @@ export class LoginComponent implements OnInit {
       alert('Please input correct value');
     }
   }
+
+  checkdemo() {
+      let user = { Username: "Mohit", Password: "222" };
+      //returns the user if found,
+      this.httpClient
+        .post(BACKEND_URL + '/login', user, httpOptions)
+        .subscribe((data: any) => {
+          if (data.ok) {
+            alert('correct');
+            console.log(data);
+            //checks login credentials in database,
+            sessionStorage.setItem('Username', data.user.Username);
+            sessionStorage.setItem('Email', data.user.Email);
+            sessionStorage.setItem('Password', data.user.Password);
+            sessionStorage.setItem('Loginstatus', data.ok);
+            sessionStorage.setItem('Role', data.user.Role);
+            sessionStorage.setItem('_id', data.user._id);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            this.router.navigateByUrl('/profile');
+          } else {
+            alert('Username or Password incorrect');
+          }
+        });
+    
+  }
 }

@@ -18,7 +18,7 @@ import { UserchannelviewComponent } from './User/userchannelview/userchannelview
 
 
 
-const routes: Routes = [{path:'login', component:LoginComponent},
+const routes: Routes = [{path:'', component:LoginComponent},
                         {path:'groupassis', component:GroupassisComponent},
                         {path:'profile', component:ProfileComponent},
                         {path:'logout', component:LogoutComponent},
